@@ -258,6 +258,121 @@
         .slide-in{animation:slideIn .28s ease;}
         @keyframes slideIn{from{transform:translateX(22px);opacity:0}to{transform:translateX(0);opacity:1}}
 
+        /* ===== STICKER ALBUM ===== */
+        #album-screen{padding:0;}
+
+        .album-hero{
+            background:var(--white);margin:14px 15px 16px;
+            border-radius:30px;padding:20px 18px;
+            box-shadow:var(--sh-wht);
+        }
+        .album-hero-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
+        .album-title{font-family:'Fredoka One',cursive;font-size:26px;color:var(--text);}
+        .album-total{font-size:13px;font-weight:900;color:#aaa;}
+
+        .pack-btns{display:flex;gap:10px;}
+        .pack-btn{
+            flex:1;padding:12px 8px;border-radius:20px;border:none;
+            font-size:13px;font-weight:900;font-family:'Nunito';
+            cursor:pointer;transition:.15s;text-align:center;
+        }
+        .pack-btn:active{transform:translateY(3px);}
+        .pack-btn.small{background:var(--yellow);color:var(--text);box-shadow:var(--sh-ylw);}
+        .pack-btn.big  {background:var(--red);color:white;box-shadow:var(--sh-red);}
+
+        /* Kategori albüm listesi */
+        .album-cats{padding:0 15px 20px;}
+        .album-cat-card{
+            background:var(--white);border-radius:22px;
+            padding:16px;margin-bottom:12px;
+            box-shadow:var(--sh-wht);cursor:pointer;transition:.15s;
+        }
+        .album-cat-card:active{transform:translateY(3px);box-shadow:0 3px 0 #ddd;}
+        .album-cat-card.complete{background:linear-gradient(135deg,#f39c12,#e67e22);color:white;}
+        .album-cat-top{display:flex;align-items:center;gap:12px;margin-bottom:10px;}
+        .album-cat-ico{font-size:32px;}
+        .album-cat-info{flex:1;}
+        .album-cat-nm{font-weight:900;font-size:16px;color:var(--text);}
+        .album-cat-card.complete .album-cat-nm{color:white;}
+        .album-cat-count{font-size:12px;color:#aaa;font-weight:700;}
+        .album-cat-card.complete .album-cat-count{color:rgba(255,255,255,.8);}
+        .album-cat-badge{font-size:22px;}
+        .album-prog-bar{background:#f0f0f0;border-radius:20px;height:8px;overflow:hidden;}
+        .album-cat-card.complete .album-prog-bar{background:rgba(255,255,255,.3);}
+        .album-prog-fill{height:100%;background:linear-gradient(90deg,var(--yellow),#FF9800);border-radius:20px;transition:width .5s ease;}
+        .album-cat-card.complete .album-prog-fill{background:rgba(255,255,255,.7);}
+
+        /* Sticker detay ekranı */
+        #sticker-screen{padding:0;}
+        .sticker-hero{
+            background:var(--red);margin:14px 15px 16px;
+            border-radius:30px;padding:20px 18px;
+            box-shadow:var(--sh-red);text-align:center;color:white;
+        }
+        .sticker-hero-ico{font-size:60px;display:block;margin-bottom:8px;}
+        .sticker-hero-nm{font-family:'Fredoka One',cursive;font-size:24px;}
+        .sticker-hero-prog{font-size:13px;opacity:.85;margin-top:4px;}
+
+        .sticker-grid{
+            display:grid;grid-template-columns:repeat(4,1fr);
+            gap:10px;padding:0 15px 20px;
+        }
+        .sticker-card{
+            background:var(--white);border-radius:18px;padding:12px 6px;
+            text-align:center;box-shadow:var(--sh-wht);
+            transition:.3s;position:relative;
+        }
+        .sticker-card.locked{
+            background:#eee;box-shadow:0 5px 0 #ccc;
+            filter:grayscale(1);
+        }
+        .sticker-card.new-card{
+            animation:cardPop .5s ease;
+            background:linear-gradient(135deg,#fff9c4,#fff);
+            box-shadow:0 5px 0 #e6b800;
+        }
+        @keyframes cardPop{0%{transform:scale(0) rotate(-10deg)}60%{transform:scale(1.2) rotate(5deg)}100%{transform:scale(1) rotate(0deg)}}
+        .sticker-card-ico{font-size:28px;display:block;margin-bottom:4px;}
+        .sticker-card-name{font-size:10px;font-weight:900;color:var(--text);}
+        .sticker-card.locked .sticker-card-name{color:#aaa;}
+        .sticker-card-num{
+            position:absolute;top:4px;right:6px;
+            background:var(--red);color:white;
+            font-size:9px;font-weight:900;
+            padding:1px 5px;border-radius:8px;
+        }
+        .sticker-card.locked .sticker-card-num{display:none;}
+
+        /* Paket açma animasyon overlay */
+        .pack-overlay{
+            position:fixed;inset:0;background:rgba(0,0,0,.7);
+            z-index:600;display:flex;align-items:center;justify-content:center;
+            opacity:0;pointer-events:none;transition:opacity .3s;
+            flex-direction:column;gap:16px;
+        }
+        .pack-overlay.show{opacity:1;pointer-events:all;}
+        .pack-cards-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+        .pack-card-reveal{
+            width:80px;height:110px;background:var(--white);
+            border-radius:18px;display:flex;flex-direction:column;
+            align-items:center;justify-content:center;gap:4px;
+            box-shadow:0 8px 24px rgba(0,0,0,.3);
+            transform:scale(0) rotateY(180deg);
+            transition:transform .4s cubic-bezier(.34,1.56,.64,1);
+            font-size:36px;cursor:pointer;
+        }
+        .pack-card-reveal.flipped{transform:scale(1) rotateY(0deg);}
+        .pack-card-reveal.dup{background:#ffe0e0;border:2px solid var(--red);}
+        .pack-card-label{font-size:10px;font-weight:900;color:var(--text);text-align:center;padding:0 4px;}
+        .pack-dup-badge{font-size:9px;color:var(--red);font-weight:900;}
+        .pack-tap-hint{color:white;font-size:14px;font-weight:900;opacity:.8;}
+        .pack-done-btn{
+            background:var(--yellow);color:var(--text);border:none;
+            padding:14px 36px;border-radius:24px;font-size:16px;font-weight:900;
+            font-family:'Nunito';cursor:pointer;box-shadow:var(--sh-ylw);
+            display:none;
+        }
+
         /* REKLAM — Sabit alt banner */
         .ad-bottom-bar{
             position:fixed; bottom:0; left:0; right:0;
@@ -366,6 +481,10 @@
                 📋 Görev
                 <span class="quest-dot" id="questDot"></span>
             </button>
+            <button class="btn-quest" style="background:#8e44ad;box-shadow:0 6px 0 #6c3483;" onclick="showScreen('album-screen');document.getElementById('backBtn').classList.remove('hidden')">
+                📚 Albüm
+                <span class="quest-dot" id="albumDot" style="background:#FFD600;"></span>
+            </button>
         </div>
     </div>
     <div class="sec-hdr"><div class="sec-ttl">Kategoriler</div></div>
@@ -424,6 +543,38 @@
 
     <div class="av-section-title">🕶️ Gözlük</div>
     <div class="av-items" id="avGlasses"></div>
+</div>
+
+<!-- ALBUM SCREEN -->
+<div class="screen" id="album-screen">
+    <div class="album-hero">
+        <div class="album-hero-top">
+            <div class="album-title">📚 Sticker Albüm</div>
+            <div class="album-total" id="albumTotal">0 / 0 kart</div>
+        </div>
+        <div class="pack-btns">
+            <button class="pack-btn small" onclick="openPack(3,30)">🎁 Mini Paket<br><small>3 kart · 30🪙</small></button>
+            <button class="pack-btn big"   onclick="openPack(5,50)">🎁 Büyük Paket<br><small>5 kart · 50🪙</small></button>
+        </div>
+    </div>
+    <div class="album-cats" id="albumCats"></div>
+</div>
+
+<!-- STICKER DETAIL SCREEN -->
+<div class="screen" id="sticker-screen">
+    <div class="sticker-hero">
+        <span class="sticker-hero-ico" id="stickerHeroIco">🍎</span>
+        <div class="sticker-hero-nm" id="stickerHeroNm">Fruits</div>
+        <div class="sticker-hero-prog" id="stickerHeroProg">0 / 10 kart toplandı</div>
+    </div>
+    <div class="sticker-grid" id="stickerGrid"></div>
+</div>
+
+<!-- PACK AÇMA OVERLAY -->
+<div class="pack-overlay" id="packOverlay">
+    <div class="pack-tap-hint" id="packHint">Kartlara dokun!</div>
+    <div class="pack-cards-row" id="packCardsRow"></div>
+    <button class="pack-done-btn" id="packDoneBtn" onclick="closePack()">Harika! 🎉</button>
 </div>
 
 <!-- QUEST SCREEN -->
@@ -662,7 +813,207 @@ const gameData={
   ]}
 };
 
-// ===== GÖREVLER =====
+// ===== STİCKER SİSTEMİ =====
+// Her kategoriden 10 sticker kart — ilk level'den alınan kelimeler temel alınır
+const stickerDefs = {};
+Object.keys(gameData).forEach(key => {
+    // İlk 10 unique kelimeyi sticker olarak kullan
+    const seen = new Set();
+    const cards = [];
+    for(const lvl of gameData[key].lv){
+        for(const item of lvl){
+            if(!seen.has(item.e)){
+                seen.add(item.e);
+                cards.push({e:item.e, i:item.i});
+                if(cards.length>=10) break;
+            }
+        }
+        if(cards.length>=10) break;
+    }
+    stickerDefs[key] = cards;
+});
+
+// Koleksiyon: {catKey: {cardId: count}} — kaç tane var
+let collection = DB.get('stickers', {});
+function saveCollection(){ DB.set('stickers', collection); }
+
+function hasSticker(cat, cardE){ return collection[cat] && collection[cat][cardE] > 0; }
+function getStickerCount(cat, cardE){ return (collection[cat] && collection[cat][cardE]) || 0; }
+function addSticker(cat, cardE){
+    if(!collection[cat]) collection[cat] = {};
+    collection[cat][cardE] = (collection[cat][cardE] || 0) + 1;
+    saveCollection();
+}
+function getCatProgress(cat){
+    const total = stickerDefs[cat].length;
+    const owned = stickerDefs[cat].filter(c => hasSticker(cat, c.e)).length;
+    return {owned, total};
+}
+function getTotalProgress(){
+    let owned=0, total=0;
+    Object.keys(stickerDefs).forEach(k => {
+        const p = getCatProgress(k);
+        owned += p.owned; total += p.total;
+    });
+    return {owned, total};
+}
+
+// Level bitince kart ver
+function giveCardsForLevel(stars){
+    if(stars < 2) return [];
+    const count = stars === 3 ? 2 : 1;
+    return drawCards(curCat, count);
+}
+
+// Rastgele kart çek
+function drawCards(cat, count){
+    const cards = stickerDefs[cat];
+    const drawn = [];
+    for(let i=0; i<count; i++){
+        const card = cards[Math.floor(Math.random() * cards.length)];
+        const isDup = hasSticker(cat, card.e);
+        addSticker(cat, card.e);
+        drawn.push({...card, cat, dup: isDup});
+    }
+    return drawn;
+}
+
+// Tüm kategorilerden rastgele kart çek (paket için)
+function drawRandomCards(count){
+    const keys = Object.keys(stickerDefs);
+    const drawn = [];
+    for(let i=0; i<count; i++){
+        const cat = keys[Math.floor(Math.random() * keys.length)];
+        const cards = stickerDefs[cat];
+        const card = cards[Math.floor(Math.random() * cards.length)];
+        const isDup = hasSticker(cat, card.e);
+        addSticker(cat, card.e);
+        drawn.push({...card, cat, dup: isDup});
+    }
+    return drawn;
+}
+
+// ===== PAKET AÇMA =====
+function openPack(count, cost){
+    if(gold < cost){
+        showModal('😢','Yeterli Altın Yok!',
+            `Bu paket ${cost}🪙 gerektiriyor.\nŞu an: ${gold}🪙`,
+            null,'🎮 Oyna','🏠 Ana Menü',
+            null,()=>playRandom(),()=>goHome());
+        return;
+    }
+    gold -= cost; saveAll(); addGold(0);
+    const cards = drawRandomCards(count);
+    showPackAnimation(cards);
+}
+
+let packFlipCount = 0;
+function showPackAnimation(cards){
+    packFlipCount = 0;
+    const row = document.getElementById('packCardsRow');
+    const hint = document.getElementById('packHint');
+    const doneBtn = document.getElementById('packDoneBtn');
+    row.innerHTML = '';
+    hint.style.display = 'block';
+    doneBtn.style.display = 'none';
+
+    cards.forEach((card, idx) => {
+        const div = document.createElement('div');
+        div.className = 'pack-card-reveal' + (card.dup ? ' dup' : '');
+        div.innerHTML = `
+            <span style="font-size:36px">${card.i}</span>
+            <div class="pack-card-label">${card.e}</div>
+            ${card.dup ? '<div class="pack-dup-badge">Çift!</div>' : ''}
+        `;
+        div.onclick = () => {
+            if(!div.classList.contains('flipped')){
+                div.classList.add('flipped');
+                ok();
+                packFlipCount++;
+                if(packFlipCount >= cards.length){
+                    hint.style.display = 'none';
+                    doneBtn.style.display = 'block';
+                    confetti({particleCount:80, spread:60, origin:{y:.5}});
+                }
+            }
+        };
+        // Stagger flip timing for auto-reveal feel
+        setTimeout(()=> div.style.opacity = '1', idx * 150);
+        div.style.opacity = '0';
+        row.appendChild(div);
+    });
+
+    document.getElementById('packOverlay').classList.add('show');
+    renderAlbumDot();
+}
+
+function closePack(){
+    document.getElementById('packOverlay').classList.remove('show');
+    renderAlbum();
+}
+
+// ===== ALBÜM RENDER =====
+function renderAlbum(){
+    const tp = getTotalProgress();
+    document.getElementById('albumTotal').innerText = `${tp.owned} / ${tp.total} kart`;
+    const cont = document.getElementById('albumCats');
+    cont.innerHTML = '';
+    Object.keys(gameData).forEach(key => {
+        const cat = gameData[key];
+        const p = getCatProgress(key);
+        const pct = Math.round(p.owned / p.total * 100);
+        const complete = p.owned === p.total;
+        cont.innerHTML += `
+        <div class="album-cat-card ${complete?'complete':''}" onclick="showStickerDetail('${key}')">
+            <div class="album-cat-top">
+                <div class="album-cat-ico">${cat.i}</div>
+                <div class="album-cat-info">
+                    <div class="album-cat-nm">${cat.n}</div>
+                    <div class="album-cat-count">${p.owned} / ${p.total} kart · %${pct}</div>
+                </div>
+                <div class="album-cat-badge">${complete ? '🏆' : p.owned>0 ? '⭐' : '🔒'}</div>
+            </div>
+            <div class="album-prog-bar">
+                <div class="album-prog-fill" style="width:${pct}%"></div>
+            </div>
+        </div>`;
+    });
+}
+
+function renderAlbumDot(){
+    const tp = getTotalProgress();
+    // Yeni kart varsa dot göster
+    const dot = document.getElementById('albumDot');
+    if(dot) dot.style.display = tp.owned > 0 ? 'block' : 'none';
+}
+
+// ===== STİCKER DETAY =====
+let curStickerCat = '';
+function showStickerDetail(cat){
+    curStickerCat = cat;
+    const catData = gameData[cat];
+    const p = getCatProgress(cat);
+    showScreen('sticker-screen');
+    document.getElementById('backBtn').classList.remove('hidden');
+    document.getElementById('stickerHeroIco').innerText = catData.i;
+    document.getElementById('stickerHeroNm').innerText = catData.n + ' Koleksiyonu';
+    document.getElementById('stickerHeroProg').innerText = `${p.owned} / ${p.total} kart toplandı`;
+
+    const grid = document.getElementById('stickerGrid');
+    grid.innerHTML = '';
+    stickerDefs[cat].forEach((card, idx) => {
+        const owned = hasSticker(cat, card.e);
+        const cnt = getStickerCount(cat, card.e);
+        grid.innerHTML += `
+        <div class="sticker-card ${owned?'':'locked'}">
+            <span class="sticker-card-ico">${owned ? card.i : '❓'}</span>
+            <div class="sticker-card-name">${owned ? card.e : '???'}</div>
+            ${cnt>1 ? `<div class="sticker-card-num">x${cnt}</div>` : ''}
+        </div>`;
+    });
+}
+
+
 const QUEST_TEMPLATES=[
     {id:'q1',ico:'🎯',col:'q-ylw',nm:'Keskin Nişancı',desc:'Bir leveli hiç yanlış yapmadan bitir',goal:1,reward:80,type:'perfect'},
     {id:'q2',ico:'⚡',col:'q-red',nm:'Hız Treni',desc:'5 doğru cevabı arka arkaya ver',goal:5,reward:60,type:'streak'},
@@ -849,6 +1200,7 @@ function init(){
     addGold(0); updateUI(); renderAvatar();
     renderCatGrid();
     renderAvatarShop();
+    renderAlbumDot();
     document.getElementById('modeToggleWrap').style.display='none';
 
     const eg=document.getElementById('emojiGrid');
@@ -1063,15 +1415,34 @@ function nextQ(){
         addGold(goldEarned,true);
         updateQuestProgress('levels',1);
         if(wrongCount===0) updateQuestProgress('perfect',1);
+
+        // Kart ver (2 yıldız = 1 kart, 3 yıldız = 2 kart)
+        const newCards = giveCardsForLevel(s);
+        const cardTxt = newCards.length > 0
+            ? `\n🃏 ${newCards.length} yeni sticker kazandın!`
+            : '';
+
         confetti({particleCount:150,spread:90,origin:{y:.55}});
         speak("Amazing! Level completed!");
         const isLast=curLvl>=LEVELS;
         showModal('🎉','Tebrikler!',
-            `Level ${curLvl} bitti! ${'⭐'.repeat(s)}\n+${goldEarned}🪙 kazandın!`,
+            `Level ${curLvl} bitti! ${'⭐'.repeat(s)}\n+${goldEarned}🪙 kazandın!${cardTxt}`,
             isLast?null:`➡ Level ${curLvl+1}`,
             '🔁 Tekrar Oyna','🏠 Ana Menü',
-            isLast?null:()=>startGame(curLvl+1),
-            ()=>startGame(curLvl),()=>goHome());
+            isLast?null:()=>{
+                if(newCards.length>0) showPackAnimation(newCards);
+                else startGame(curLvl+1);
+            },
+            ()=>{
+                if(newCards.length>0) showPackAnimation(newCards);
+                else startGame(curLvl);
+            },
+            ()=>goHome());
+
+        // Eğer kart kazanıldıysa modaldan sonra animasyon göster
+        if(newCards.length>0){
+            renderAlbumDot();
+        }
         return;
     }
 
@@ -1147,11 +1518,14 @@ function showScreen(id){
     setTimeout(()=>el.classList.remove('slide-in'),350);
     if(id==='quest-screen') renderQuests();
     if(id==='avatar-screen') renderAvatarShop();
+    if(id==='album-screen') renderAlbum();
+    if(id==='sticker-screen'){/* rendered separately */}
     window.scrollTo(0,0);
 }
 function goBack(){
     document.getElementById('modeToggleWrap').style.display='none';
     if(document.getElementById('game-screen').classList.contains('active')) showLevels(curCat);
+    else if(document.getElementById('sticker-screen').classList.contains('active')) showScreen('album-screen');
     else if(document.getElementById('level-screen').classList.contains('active')) goHome();
     else goHome();
 }
