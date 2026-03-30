@@ -495,115 +495,170 @@ const CAT_PRICES={
     food:200,emojis:250,jobs:300
 };
 
-// ===== GAME DATA =====
+// ===== GAME DATA — MEB İlkokul Müfredatı Bazlı =====
+// LV 1-5: Çok Kolay (1-2. sınıf) · LV 6-10: Orta (3. sınıf) · LV 11-15: Zor (4. sınıf+)
 const gameData={
+
   fruits:{n:'Fruits',i:'🍎',c:'red-card',lv:[
-    [{e:'Apple',i:'🍎'},{e:'Banana',i:'🍌'},{e:'Grape',i:'🍇'},{e:'Cherry',i:'🍒'},{e:'Mango',i:'🥭'},{e:'Pear',i:'🍐'},{e:'Peach',i:'🍑'},{e:'Kiwi',i:'🥝'},{e:'Lemon',i:'🍋'},{e:'Melon',i:'🍈'}],
-    [{e:'Watermelon',i:'🍉'},{e:'Strawberry',i:'🍓'},{e:'Pineapple',i:'🍍'},{e:'Coconut',i:'🥥'},{e:'Blueberry',i:'🫐'},{e:'Orange',i:'🍊'},{e:'Tomato',i:'🍅'},{e:'Avocado',i:'🥑'},{e:'Lime',i:'🍋'},{e:'Olive',i:'🫒'}],
-    [{e:'Plum',i:'🍑'},{e:'Apricot',i:'🍊'},{e:'Raspberry',i:'🍓'},{e:'Tangerine',i:'🍊'},{e:'Fig',i:'🍐'},{e:'Guava',i:'🥭'},{e:'Papaya',i:'🥭'},{e:'Mulberry',i:'🍇'},{e:'Blackberry',i:'🫐'},{e:'Cranberry',i:'🍓'}],
-    [{e:'Pomegranate',i:'🍎'},{e:'Lychee',i:'🍈'},{e:'Persimmon',i:'🍊'},{e:'Dragonfruit',i:'🍉'},{e:'Starfruit',i:'🍋'},{e:'Jackfruit',i:'🍈'},{e:'Quince',i:'🍐'},{e:'Date',i:'🌴'},{e:'Durian',i:'🥭'},{e:'Gooseberry',i:'🍇'}],
-    [{e:'Mandarin',i:'🍊'},{e:'Nectarine',i:'🍑'},{e:'Passion Fruit',i:'🟤'},{e:'Rambutan',i:'🌺'},{e:'Longan',i:'🍇'},{e:'Mangosteen',i:'🍇'},{e:'Breadfruit',i:'🍈'},{e:'Feijoa',i:'🟢'},{e:'Carambola',i:'🌟'},{e:'Calamansi',i:'🍋'}],
-    [{e:'Apple',i:'🍎'},{e:'Banana',i:'🍌'},{e:'Orange',i:'🍊'},{e:'Grape',i:'🍇'},{e:'Mango',i:'🥭'},{e:'Pineapple',i:'🍍'},{e:'Strawberry',i:'🍓'},{e:'Lemon',i:'🍋'},{e:'Coconut',i:'🥥'},{e:'Avocado',i:'🥑'}],
-    [{e:'Watermelon',i:'🍉'},{e:'Blueberry',i:'🫐'},{e:'Peach',i:'🍑'},{e:'Cherry',i:'🍒'},{e:'Kiwi',i:'🥝'},{e:'Pomegranate',i:'🍎'},{e:'Dragonfruit',i:'🍉'},{e:'Raspberry',i:'🍓'},{e:'Blackberry',i:'🫐'},{e:'Papaya',i:'🥭'}],
-    [{e:'Olive',i:'🫒'},{e:'Lime',i:'🍋'},{e:'Tangerine',i:'🍊'},{e:'Lychee',i:'🍈'},{e:'Guava',i:'🥭'},{e:'Fig',i:'🍐'},{e:'Mulberry',i:'🍇'},{e:'Pear',i:'🍐'},{e:'Apricot',i:'🍊'},{e:'Cranberry',i:'🍓'}],
-    [{e:'Nectarine',i:'🍑'},{e:'Persimmon',i:'🍊'},{e:'Jackfruit',i:'🍈'},{e:'Durian',i:'🥭'},{e:'Starfruit',i:'🍋'},{e:'Passion Fruit',i:'🟤'},{e:'Rambutan',i:'🌺'},{e:'Mandarin',i:'🍊'},{e:'Longan',i:'🍇'},{e:'Quince',i:'🍐'}],
-    [{e:'Apple',i:'🍎'},{e:'Mango',i:'🥭'},{e:'Strawberry',i:'🍓'},{e:'Pineapple',i:'🍍'},{e:'Lemon',i:'🍋'},{e:'Watermelon',i:'🍉'},{e:'Cherry',i:'🍒'},{e:'Blueberry',i:'🫐'},{e:'Kiwi',i:'🥝'},{e:'Pomegranate',i:'🍎'}]
+    [{e:'Apple',i:'🍎'},{e:'Banana',i:'🍌'},{e:'Orange',i:'🍊'},{e:'Grape',i:'🍇'},{e:'Lemon',i:'🍋'},{e:'Cherry',i:'🍒'},{e:'Peach',i:'🍑'},{e:'Pear',i:'🍐'},{e:'Melon',i:'🍈'},{e:'Kiwi',i:'🥝'}],
+    [{e:'Strawberry',i:'🍓'},{e:'Watermelon',i:'🍉'},{e:'Pineapple',i:'🍍'},{e:'Mango',i:'🥭'},{e:'Coconut',i:'🥥'},{e:'Blueberry',i:'🫐'},{e:'Tomato',i:'🍅'},{e:'Avocado',i:'🥑'},{e:'Fig',i:'🍐'},{e:'Plum',i:'🍑'}],
+    [{e:'Apple',i:'🍎'},{e:'Banana',i:'🍌'},{e:'Orange',i:'🍊'},{e:'Strawberry',i:'🍓'},{e:'Watermelon',i:'🍉'},{e:'Grape',i:'🍇'},{e:'Pineapple',i:'🍍'},{e:'Mango',i:'🥭'},{e:'Lemon',i:'🍋'},{e:'Cherry',i:'🍒'}],
+    [{e:'Peach',i:'🍑'},{e:'Pear',i:'🍐'},{e:'Kiwi',i:'🥝'},{e:'Blueberry',i:'🫐'},{e:'Coconut',i:'🥥'},{e:'Avocado',i:'🥑'},{e:'Melon',i:'🍈'},{e:'Tomato',i:'🍅'},{e:'Fig',i:'🍐'},{e:'Plum',i:'🍑'}],
+    [{e:'Apple',i:'🍎'},{e:'Banana',i:'🍌'},{e:'Orange',i:'🍊'},{e:'Grape',i:'🍇'},{e:'Strawberry',i:'🍓'},{e:'Watermelon',i:'🍉'},{e:'Mango',i:'🥭'},{e:'Kiwi',i:'🥝'},{e:'Lemon',i:'🍋'},{e:'Peach',i:'🍑'}],
+    [{e:'Lime',i:'🍋'},{e:'Tangerine',i:'🍊'},{e:'Apricot',i:'🍊'},{e:'Raspberry',i:'🍓'},{e:'Blackberry',i:'🫐'},{e:'Cranberry',i:'🍓'},{e:'Pomegranate',i:'🍎'},{e:'Olive',i:'🫒'},{e:'Mulberry',i:'🍇'},{e:'Guava',i:'🥭'}],
+    [{e:'Papaya',i:'🥭'},{e:'Lychee',i:'🍈'},{e:'Mandarin',i:'🍊'},{e:'Nectarine',i:'🍑'},{e:'Persimmon',i:'🍊'},{e:'Lime',i:'🍋'},{e:'Apricot',i:'🍊'},{e:'Raspberry',i:'🍓'},{e:'Pomegranate',i:'🍎'},{e:'Olive',i:'🫒'}],
+    [{e:'Cranberry',i:'🍓'},{e:'Blackberry',i:'🫐'},{e:'Guava',i:'🥭'},{e:'Papaya',i:'🥭'},{e:'Lychee',i:'🍈'},{e:'Mandarin',i:'🍊'},{e:'Nectarine',i:'🍑'},{e:'Tangerine',i:'🍊'},{e:'Mulberry',i:'🍇'},{e:'Persimmon',i:'🍊'}],
+    [{e:'Apple',i:'🍎'},{e:'Orange',i:'🍊'},{e:'Mango',i:'🥭'},{e:'Lime',i:'🍋'},{e:'Raspberry',i:'🍓'},{e:'Pomegranate',i:'🍎'},{e:'Lychee',i:'🍈'},{e:'Guava',i:'🥭'},{e:'Apricot',i:'🍊'},{e:'Nectarine',i:'🍑'}],
+    [{e:'Banana',i:'🍌'},{e:'Grape',i:'🍇'},{e:'Strawberry',i:'🍓'},{e:'Blueberry',i:'🫐'},{e:'Cranberry',i:'🍓'},{e:'Blackberry',i:'🫐'},{e:'Mandarin',i:'🍊'},{e:'Persimmon',i:'🍊'},{e:'Papaya',i:'🥭'},{e:'Olive',i:'🫒'}],
+    [{e:'Dragonfruit',i:'🍉'},{e:'Starfruit',i:'🍋'},{e:'Jackfruit',i:'🍈'},{e:'Quince',i:'🍐'},{e:'Durian',i:'🥭'},{e:'Passion Fruit',i:'🟤'},{e:'Rambutan',i:'🌺'},{e:'Longan',i:'🍇'},{e:'Mangosteen',i:'🍇'},{e:'Breadfruit',i:'🍈'}],
+    [{e:'Tamarind',i:'🍫'},{e:'Feijoa',i:'🟢'},{e:'Carambola',i:'🌟'},{e:'Calamansi',i:'🍋'},{e:'Sapodilla',i:'🟤'},{e:'Ackee',i:'🍈'},{e:'Cherimoya',i:'🟢'},{e:'Marula',i:'🍊'},{e:'Baobab',i:'🌳'},{e:'Cupuacu',i:'🍫'}],
+    [{e:'Dragonfruit',i:'🍉'},{e:'Jackfruit',i:'🍈'},{e:'Passion Fruit',i:'🟤'},{e:'Rambutan',i:'🌺'},{e:'Durian',i:'🥭'},{e:'Starfruit',i:'🍋'},{e:'Longan',i:'🍇'},{e:'Quince',i:'🍐'},{e:'Mangosteen',i:'🍇'},{e:'Tamarind',i:'🍫'}],
+    [{e:'Feijoa',i:'🟢'},{e:'Carambola',i:'🌟'},{e:'Sapodilla',i:'🟤'},{e:'Ackee',i:'🍈'},{e:'Cherimoya',i:'🟢'},{e:'Breadfruit',i:'🍈'},{e:'Calamansi',i:'🍋'},{e:'Marula',i:'🍊'},{e:'Baobab',i:'🌳'},{e:'Cupuacu',i:'🍫'}],
+    [{e:'Dragonfruit',i:'🍉'},{e:'Jackfruit',i:'🍈'},{e:'Rambutan',i:'🌺'},{e:'Passion Fruit',i:'🟤'},{e:'Durian',i:'🥭'},{e:'Longan',i:'🍇'},{e:'Feijoa',i:'🟢'},{e:'Carambola',i:'🌟'},{e:'Quince',i:'🍐'},{e:'Mangosteen',i:'🍇'}]
   ]},
+
   animals:{n:'Animals',i:'🦁',c:'',lv:[
-    [{e:'Lion',i:'🦁'},{e:'Tiger',i:'🐯'},{e:'Cat',i:'🐱'},{e:'Dog',i:'🐶'},{e:'Elephant',i:'🐘'},{e:'Rabbit',i:'🐰'},{e:'Panda',i:'🐼'},{e:'Bear',i:'🐻'},{e:'Monkey',i:'🐵'},{e:'Bird',i:'🐦'}],
-    [{e:'Fish',i:'🐟'},{e:'Horse',i:'🐴'},{e:'Cow',i:'🐄'},{e:'Pig',i:'🐷'},{e:'Sheep',i:'🐑'},{e:'Chicken',i:'🐔'},{e:'Duck',i:'🦆'},{e:'Frog',i:'🐸'},{e:'Snake',i:'🐍'},{e:'Turtle',i:'🐢'}],
-    [{e:'Butterfly',i:'🦋'},{e:'Bee',i:'🐝'},{e:'Ant',i:'🐜'},{e:'Spider',i:'🕷️'},{e:'Crab',i:'🦀'},{e:'Dolphin',i:'🐬'},{e:'Whale',i:'🐳'},{e:'Octopus',i:'🐙'},{e:'Penguin',i:'🐧'},{e:'Koala',i:'🐨'}],
-    [{e:'Kangaroo',i:'🦘'},{e:'Giraffe',i:'🦒'},{e:'Zebra',i:'🦓'},{e:'Gorilla',i:'🦍'},{e:'Crocodile',i:'🐊'},{e:'Flamingo',i:'🦩'},{e:'Fox',i:'🦊'},{e:'Wolf',i:'🐺'},{e:'Deer',i:'🦌'},{e:'Hedgehog',i:'🦔'}],
-    [{e:'Camel',i:'🐫'},{e:'Llama',i:'🦙'},{e:'Peacock',i:'🦚'},{e:'Parrot',i:'🦜'},{e:'Shark',i:'🦈'},{e:'Lobster',i:'🦞'},{e:'Snail',i:'🐌'},{e:'Cricket',i:'🦗'},{e:'Rhino',i:'🦏'},{e:'Hippo',i:'🦛'}],
-    [{e:'Otter',i:'🦦'},{e:'Raccoon',i:'🦝'},{e:'Bat',i:'🦇'},{e:'Turkey',i:'🦃'},{e:'Owl',i:'🦉'},{e:'Eagle',i:'🦅'},{e:'Swan',i:'🦢'},{e:'Jellyfish',i:'🪼'},{e:'Starfish',i:'⭐'},{e:'Coral',i:'🪸'}],
-    [{e:'Lion',i:'🦁'},{e:'Elephant',i:'🐘'},{e:'Dolphin',i:'🐬'},{e:'Penguin',i:'🐧'},{e:'Koala',i:'🐨'},{e:'Kangaroo',i:'🦘'},{e:'Butterfly',i:'🦋'},{e:'Frog',i:'🐸'},{e:'Turtle',i:'🐢'},{e:'Bee',i:'🐝'}],
-    [{e:'Giraffe',i:'🦒'},{e:'Zebra',i:'🦓'},{e:'Flamingo',i:'🦩'},{e:'Peacock',i:'🦚'},{e:'Parrot',i:'🦜'},{e:'Shark',i:'🦈'},{e:'Camel',i:'🐫'},{e:'Rhino',i:'🦏'},{e:'Otter',i:'🦦'},{e:'Owl',i:'🦉'}],
-    [{e:'Tiger',i:'🐯'},{e:'Panda',i:'🐼'},{e:'Wolf',i:'🐺'},{e:'Fox',i:'🦊'},{e:'Bear',i:'🐻'},{e:'Gorilla',i:'🦍'},{e:'Crocodile',i:'🐊'},{e:'Snake',i:'🐍'},{e:'Octopus',i:'🐙'},{e:'Eagle',i:'🦅'}],
-    [{e:'Cat',i:'🐱'},{e:'Dog',i:'🐶'},{e:'Horse',i:'🐴'},{e:'Cow',i:'🐄'},{e:'Pig',i:'🐷'},{e:'Duck',i:'🦆'},{e:'Rabbit',i:'🐰'},{e:'Fish',i:'🐟'},{e:'Bird',i:'🐦'},{e:'Bee',i:'🐝'}]
+    [{e:'Cat',i:'🐱'},{e:'Dog',i:'🐶'},{e:'Bird',i:'🐦'},{e:'Fish',i:'🐟'},{e:'Horse',i:'🐴'},{e:'Cow',i:'🐄'},{e:'Pig',i:'🐷'},{e:'Sheep',i:'🐑'},{e:'Rabbit',i:'🐰'},{e:'Duck',i:'🦆'}],
+    [{e:'Lion',i:'🦁'},{e:'Tiger',i:'🐯'},{e:'Elephant',i:'🐘'},{e:'Bear',i:'🐻'},{e:'Monkey',i:'🐵'},{e:'Panda',i:'🐼'},{e:'Frog',i:'🐸'},{e:'Turtle',i:'🐢'},{e:'Chicken',i:'🐔'},{e:'Snake',i:'🐍'}],
+    [{e:'Cat',i:'🐱'},{e:'Dog',i:'🐶'},{e:'Lion',i:'🦁'},{e:'Tiger',i:'🐯'},{e:'Elephant',i:'🐘'},{e:'Rabbit',i:'🐰'},{e:'Duck',i:'🦆'},{e:'Fish',i:'🐟'},{e:'Bear',i:'🐻'},{e:'Monkey',i:'🐵'}],
+    [{e:'Horse',i:'🐴'},{e:'Cow',i:'🐄'},{e:'Pig',i:'🐷'},{e:'Sheep',i:'🐑'},{e:'Chicken',i:'🐔'},{e:'Panda',i:'🐼'},{e:'Frog',i:'🐸'},{e:'Turtle',i:'🐢'},{e:'Bird',i:'🐦'},{e:'Snake',i:'🐍'}],
+    [{e:'Cat',i:'🐱'},{e:'Dog',i:'🐶'},{e:'Elephant',i:'🐘'},{e:'Lion',i:'🦁'},{e:'Bear',i:'🐻'},{e:'Rabbit',i:'🐰'},{e:'Fish',i:'🐟'},{e:'Duck',i:'🦆'},{e:'Panda',i:'🐼'},{e:'Frog',i:'🐸'}],
+    [{e:'Dolphin',i:'🐬'},{e:'Penguin',i:'🐧'},{e:'Koala',i:'🐨'},{e:'Kangaroo',i:'🦘'},{e:'Giraffe',i:'🦒'},{e:'Zebra',i:'🦓'},{e:'Fox',i:'🦊'},{e:'Wolf',i:'🐺'},{e:'Deer',i:'🦌'},{e:'Bee',i:'🐝'}],
+    [{e:'Butterfly',i:'🦋'},{e:'Whale',i:'🐳'},{e:'Octopus',i:'🐙'},{e:'Crab',i:'🦀'},{e:'Ant',i:'🐜'},{e:'Flamingo',i:'🦩'},{e:'Peacock',i:'🦚'},{e:'Parrot',i:'🦜'},{e:'Owl',i:'🦉'},{e:'Eagle',i:'🦅'}],
+    [{e:'Dolphin',i:'🐬'},{e:'Penguin',i:'🐧'},{e:'Koala',i:'🐨'},{e:'Giraffe',i:'🦒'},{e:'Zebra',i:'🦓'},{e:'Fox',i:'🦊'},{e:'Butterfly',i:'🦋'},{e:'Whale',i:'🐳'},{e:'Bee',i:'🐝'},{e:'Owl',i:'🦉'}],
+    [{e:'Kangaroo',i:'🦘'},{e:'Wolf',i:'🐺'},{e:'Deer',i:'🦌'},{e:'Octopus',i:'🐙'},{e:'Crab',i:'🦀'},{e:'Flamingo',i:'🦩'},{e:'Parrot',i:'🦜'},{e:'Eagle',i:'🦅'},{e:'Peacock',i:'🦚'},{e:'Ant',i:'🐜'}],
+    [{e:'Dolphin',i:'🐬'},{e:'Koala',i:'🐨'},{e:'Giraffe',i:'🦒'},{e:'Butterfly',i:'🦋'},{e:'Penguin',i:'🐧'},{e:'Whale',i:'🐳'},{e:'Fox',i:'🦊'},{e:'Owl',i:'🦉'},{e:'Bee',i:'🐝'},{e:'Eagle',i:'🦅'}],
+    [{e:'Gorilla',i:'🦍'},{e:'Crocodile',i:'🐊'},{e:'Camel',i:'🐫'},{e:'Llama',i:'🦙'},{e:'Shark',i:'🦈'},{e:'Rhino',i:'🦏'},{e:'Hippo',i:'🦛'},{e:'Otter',i:'🦦'},{e:'Raccoon',i:'🦝'},{e:'Hedgehog',i:'🦔'}],
+    [{e:'Swan',i:'🦢'},{e:'Turkey',i:'🦃'},{e:'Bat',i:'🦇'},{e:'Lobster',i:'🦞'},{e:'Snail',i:'🐌'},{e:'Spider',i:'🕷️'},{e:'Jellyfish',i:'🪼'},{e:'Coral',i:'🪸'},{e:'Cricket',i:'🦗'},{e:'Starfish',i:'⭐'}],
+    [{e:'Gorilla',i:'🦍'},{e:'Crocodile',i:'🐊'},{e:'Camel',i:'🐫'},{e:'Shark',i:'🦈'},{e:'Rhino',i:'🦏'},{e:'Hippo',i:'🦛'},{e:'Otter',i:'🦦'},{e:'Swan',i:'🦢'},{e:'Bat',i:'🦇'},{e:'Lobster',i:'🦞'}],
+    [{e:'Llama',i:'🦙'},{e:'Raccoon',i:'🦝'},{e:'Hedgehog',i:'🦔'},{e:'Turkey',i:'🦃'},{e:'Snail',i:'🐌'},{e:'Spider',i:'🕷️'},{e:'Jellyfish',i:'🪼'},{e:'Cricket',i:'🦗'},{e:'Gorilla',i:'🦍'},{e:'Crocodile',i:'🐊'}],
+    [{e:'Camel',i:'🐫'},{e:'Shark',i:'🦈'},{e:'Rhino',i:'🦏'},{e:'Otter',i:'🦦'},{e:'Swan',i:'🦢'},{e:'Bat',i:'🦇'},{e:'Llama',i:'🦙'},{e:'Raccoon',i:'🦝'},{e:'Hedgehog',i:'🦔'},{e:'Lobster',i:'🦞'}]
   ]},
+
   colors:{n:'Colors',i:'🎨',c:'ylw-card',lv:[
     [{e:'Red',i:'🔴'},{e:'Blue',i:'🔵'},{e:'Yellow',i:'🟡'},{e:'Green',i:'🟢'},{e:'Orange',i:'🟠'},{e:'Purple',i:'🟣'},{e:'Pink',i:'🩷'},{e:'Black',i:'⚫'},{e:'White',i:'⚪'},{e:'Brown',i:'🟤'}],
-    [{e:'Gray',i:'🩶'},{e:'Gold',i:'🌟'},{e:'Silver',i:'🪨'},{e:'Turquoise',i:'🩵'},{e:'Violet',i:'🔮'},{e:'Beige',i:'🌾'},{e:'Crimson',i:'🔴'},{e:'Teal',i:'🌊'},{e:'Magenta',i:'🌸'},{e:'Navy',i:'🌑'}],
-    [{e:'Coral',i:'🪸'},{e:'Mint',i:'🌿'},{e:'Lavender',i:'💜'},{e:'Peach',i:'🍑'},{e:'Ivory',i:'⚪'},{e:'Indigo',i:'🫐'},{e:'Maroon',i:'🍷'},{e:'Olive',i:'🫒'},{e:'Salmon',i:'🐟'},{e:'Cyan',i:'🩵'}],
-    [{e:'Khaki',i:'🌾'},{e:'Amber',i:'🌟'},{e:'Scarlet',i:'🔴'},{e:'Ruby',i:'💎'},{e:'Emerald',i:'💚'},{e:'Sapphire',i:'💙'},{e:'Cream',i:'🍦'},{e:'Charcoal',i:'⚫'},{e:'Rose',i:'🌹'},{e:'Tan',i:'🟫'}],
-    [{e:'Burgundy',i:'🍷'},{e:'Mauve',i:'💜'},{e:'Lilac',i:'🌸'},{e:'Cobalt',i:'🔵'},{e:'Jade',i:'💚'},{e:'Rust',i:'🟠'},{e:'Ochre',i:'🟡'},{e:'Taupe',i:'🟤'},{e:'Lemon',i:'🍋'},{e:'Sepia',i:'🟫'}],
-    [{e:'Red',i:'🔴'},{e:'Blue',i:'🔵'},{e:'Yellow',i:'🟡'},{e:'Green',i:'🟢'},{e:'Orange',i:'🟠'},{e:'Purple',i:'🟣'},{e:'Pink',i:'🩷'},{e:'Gray',i:'🩶'},{e:'Turquoise',i:'🩵'},{e:'Gold',i:'🌟'}],
-    [{e:'Silver',i:'🪨'},{e:'Crimson',i:'🔴'},{e:'Teal',i:'🌊'},{e:'Coral',i:'🪸'},{e:'Mint',i:'🌿'},{e:'Lavender',i:'💜'},{e:'Indigo',i:'🫐'},{e:'Maroon',i:'🍷'},{e:'Cyan',i:'🩵'},{e:'Ruby',i:'💎'}],
-    [{e:'Emerald',i:'💚'},{e:'Sapphire',i:'💙'},{e:'Amber',i:'🌟'},{e:'Scarlet',i:'🔴'},{e:'Beige',i:'🌾'},{e:'Magenta',i:'🌸'},{e:'Navy',i:'🌑'},{e:'Rose',i:'🌹'},{e:'Burgundy',i:'🍷'},{e:'Lilac',i:'🌸'}],
-    [{e:'Cobalt',i:'🔵'},{e:'Jade',i:'💚'},{e:'Rust',i:'🟠'},{e:'Ivory',i:'⚪'},{e:'Peach',i:'🍑'},{e:'Salmon',i:'🐟'},{e:'Mauve',i:'💜'},{e:'Khaki',i:'🌾'},{e:'Taupe',i:'🟤'},{e:'Ochre',i:'🟡'}],
-    [{e:'Red',i:'🔴'},{e:'Blue',i:'🔵'},{e:'Green',i:'🟢'},{e:'Yellow',i:'🟡'},{e:'Purple',i:'🟣'},{e:'Orange',i:'🟠'},{e:'Pink',i:'🩷'},{e:'Turquoise',i:'🩵'},{e:'Gold',i:'🌟'},{e:'Emerald',i:'💚'}]
+    [{e:'Red',i:'🔴'},{e:'Blue',i:'🔵'},{e:'Yellow',i:'🟡'},{e:'Green',i:'🟢'},{e:'Orange',i:'🟠'},{e:'Purple',i:'🟣'},{e:'Pink',i:'🩷'},{e:'Black',i:'⚫'},{e:'White',i:'⚪'},{e:'Brown',i:'🟤'}],
+    [{e:'Red',i:'🔴'},{e:'Blue',i:'🔵'},{e:'Green',i:'🟢'},{e:'Yellow',i:'🟡'},{e:'Orange',i:'🟠'},{e:'Purple',i:'🟣'},{e:'Pink',i:'🩷'},{e:'White',i:'⚪'},{e:'Black',i:'⚫'},{e:'Brown',i:'🟤'}],
+    [{e:'Red',i:'🔴'},{e:'Blue',i:'🔵'},{e:'Yellow',i:'🟡'},{e:'Green',i:'🟢'},{e:'Orange',i:'🟠'},{e:'Purple',i:'🟣'},{e:'Pink',i:'🩷'},{e:'Black',i:'⚫'},{e:'White',i:'⚪'},{e:'Brown',i:'🟤'}],
+    [{e:'Red',i:'🔴'},{e:'Blue',i:'🔵'},{e:'Yellow',i:'🟡'},{e:'Green',i:'🟢'},{e:'Orange',i:'🟠'},{e:'Purple',i:'🟣'},{e:'Pink',i:'🩷'},{e:'Black',i:'⚫'},{e:'White',i:'⚪'},{e:'Brown',i:'🟤'}],
+    [{e:'Gray',i:'🩶'},{e:'Gold',i:'🌟'},{e:'Silver',i:'🪨'},{e:'Violet',i:'🔮'},{e:'Turquoise',i:'🩵'},{e:'Navy',i:'🌑'},{e:'Beige',i:'🌾'},{e:'Teal',i:'🌊'},{e:'Cream',i:'🍦'},{e:'Peach',i:'🍑'}],
+    [{e:'Mint',i:'🌿'},{e:'Coral',i:'🪸'},{e:'Lavender',i:'💜'},{e:'Indigo',i:'🫐'},{e:'Magenta',i:'🌸'},{e:'Maroon',i:'🍷'},{e:'Olive',i:'🫒'},{e:'Rose',i:'🌹'},{e:'Salmon',i:'🐟'},{e:'Cyan',i:'🩵'}],
+    [{e:'Gray',i:'🩶'},{e:'Gold',i:'🌟'},{e:'Silver',i:'🪨'},{e:'Violet',i:'🔮'},{e:'Turquoise',i:'🩵'},{e:'Navy',i:'🌑'},{e:'Mint',i:'🌿'},{e:'Coral',i:'🪸'},{e:'Lavender',i:'💜'},{e:'Indigo',i:'🫐'}],
+    [{e:'Beige',i:'🌾'},{e:'Teal',i:'🌊'},{e:'Cream',i:'🍦'},{e:'Peach',i:'🍑'},{e:'Magenta',i:'🌸'},{e:'Maroon',i:'🍷'},{e:'Olive',i:'🫒'},{e:'Rose',i:'🌹'},{e:'Salmon',i:'🐟'},{e:'Cyan',i:'🩵'}],
+    [{e:'Gray',i:'🩶'},{e:'Violet',i:'🔮'},{e:'Turquoise',i:'🩵'},{e:'Mint',i:'🌿'},{e:'Coral',i:'🪸'},{e:'Lavender',i:'💜'},{e:'Navy',i:'🌑'},{e:'Teal',i:'🌊'},{e:'Indigo',i:'🫐'},{e:'Rose',i:'🌹'}],
+    [{e:'Scarlet',i:'🔴'},{e:'Crimson',i:'🔴'},{e:'Ruby',i:'💎'},{e:'Emerald',i:'💚'},{e:'Sapphire',i:'💙'},{e:'Amber',i:'🌟'},{e:'Jade',i:'💚'},{e:'Cobalt',i:'🔵'},{e:'Rust',i:'🟠'},{e:'Ochre',i:'🟡'}],
+    [{e:'Burgundy',i:'🍷'},{e:'Mauve',i:'💜'},{e:'Lilac',i:'🌸'},{e:'Taupe',i:'🟤'},{e:'Khaki',i:'🌾'},{e:'Sepia',i:'🟫'},{e:'Charcoal',i:'⚫'},{e:'Ivory',i:'⚪'},{e:'Tan',i:'🟫'},{e:'Lemon',i:'🍋'}],
+    [{e:'Scarlet',i:'🔴'},{e:'Ruby',i:'💎'},{e:'Emerald',i:'💚'},{e:'Sapphire',i:'💙'},{e:'Amber',i:'🌟'},{e:'Cobalt',i:'🔵'},{e:'Burgundy',i:'🍷'},{e:'Mauve',i:'💜'},{e:'Lilac',i:'🌸'},{e:'Khaki',i:'🌾'}],
+    [{e:'Crimson',i:'🔴'},{e:'Jade',i:'💚'},{e:'Rust',i:'🟠'},{e:'Ochre',i:'🟡'},{e:'Taupe',i:'🟤'},{e:'Sepia',i:'🟫'},{e:'Charcoal',i:'⚫'},{e:'Ivory',i:'⚪'},{e:'Tan',i:'🟫'},{e:'Lemon',i:'🍋'}],
+    [{e:'Scarlet',i:'🔴'},{e:'Emerald',i:'💚'},{e:'Sapphire',i:'💙'},{e:'Ruby',i:'💎'},{e:'Amber',i:'🌟'},{e:'Burgundy',i:'🍷'},{e:'Lilac',i:'🌸'},{e:'Cobalt',i:'🔵'},{e:'Jade',i:'💚'},{e:'Ochre',i:'🟡'}]
   ]},
+
   numbers:{n:'Numbers',i:'🔢',c:'red-card',lv:[
     [{e:'One',i:'1️⃣'},{e:'Two',i:'2️⃣'},{e:'Three',i:'3️⃣'},{e:'Four',i:'4️⃣'},{e:'Five',i:'5️⃣'},{e:'Six',i:'6️⃣'},{e:'Seven',i:'7️⃣'},{e:'Eight',i:'8️⃣'},{e:'Nine',i:'9️⃣'},{e:'Ten',i:'🔟'}],
+    [{e:'One',i:'1️⃣'},{e:'Two',i:'2️⃣'},{e:'Three',i:'3️⃣'},{e:'Four',i:'4️⃣'},{e:'Five',i:'5️⃣'},{e:'Six',i:'6️⃣'},{e:'Seven',i:'7️⃣'},{e:'Eight',i:'8️⃣'},{e:'Nine',i:'9️⃣'},{e:'Ten',i:'🔟'}],
+    [{e:'One',i:'1️⃣'},{e:'Two',i:'2️⃣'},{e:'Three',i:'3️⃣'},{e:'Four',i:'4️⃣'},{e:'Five',i:'5️⃣'},{e:'Six',i:'6️⃣'},{e:'Seven',i:'7️⃣'},{e:'Eight',i:'8️⃣'},{e:'Nine',i:'9️⃣'},{e:'Ten',i:'🔟'}],
+    [{e:'One',i:'1️⃣'},{e:'Two',i:'2️⃣'},{e:'Three',i:'3️⃣'},{e:'Four',i:'4️⃣'},{e:'Five',i:'5️⃣'},{e:'Six',i:'6️⃣'},{e:'Seven',i:'7️⃣'},{e:'Eight',i:'8️⃣'},{e:'Nine',i:'9️⃣'},{e:'Ten',i:'🔟'}],
+    [{e:'Zero',i:'0️⃣'},{e:'One',i:'1️⃣'},{e:'Two',i:'2️⃣'},{e:'Three',i:'3️⃣'},{e:'Four',i:'4️⃣'},{e:'Five',i:'5️⃣'},{e:'Six',i:'6️⃣'},{e:'Seven',i:'7️⃣'},{e:'Eight',i:'8️⃣'},{e:'Ten',i:'🔟'}],
     [{e:'Eleven',i:'1️⃣1️⃣'},{e:'Twelve',i:'1️⃣2️⃣'},{e:'Thirteen',i:'1️⃣3️⃣'},{e:'Fourteen',i:'1️⃣4️⃣'},{e:'Fifteen',i:'1️⃣5️⃣'},{e:'Sixteen',i:'1️⃣6️⃣'},{e:'Seventeen',i:'1️⃣7️⃣'},{e:'Eighteen',i:'1️⃣8️⃣'},{e:'Nineteen',i:'1️⃣9️⃣'},{e:'Twenty',i:'2️⃣0️⃣'}],
-    [{e:'Zero',i:'0️⃣'},{e:'Thirty',i:'3️⃣0️⃣'},{e:'Forty',i:'4️⃣0️⃣'},{e:'Fifty',i:'5️⃣0️⃣'},{e:'Sixty',i:'6️⃣0️⃣'},{e:'Seventy',i:'7️⃣0️⃣'},{e:'Eighty',i:'8️⃣0️⃣'},{e:'Ninety',i:'9️⃣0️⃣'},{e:'Hundred',i:'💯'},{e:'Thousand',i:'🔢'}],
+    [{e:'Twenty',i:'2️⃣0️⃣'},{e:'Thirty',i:'3️⃣0️⃣'},{e:'Forty',i:'4️⃣0️⃣'},{e:'Fifty',i:'5️⃣0️⃣'},{e:'Sixty',i:'6️⃣0️⃣'},{e:'Seventy',i:'7️⃣0️⃣'},{e:'Eighty',i:'8️⃣0️⃣'},{e:'Ninety',i:'9️⃣0️⃣'},{e:'Hundred',i:'💯'},{e:'Zero',i:'0️⃣'}],
     [{e:'First',i:'🥇'},{e:'Second',i:'🥈'},{e:'Third',i:'🥉'},{e:'Fourth',i:'4️⃣'},{e:'Fifth',i:'5️⃣'},{e:'Sixth',i:'6️⃣'},{e:'Seventh',i:'7️⃣'},{e:'Eighth',i:'8️⃣'},{e:'Ninth',i:'9️⃣'},{e:'Tenth',i:'🔟'}],
-    [{e:'Double',i:'2️⃣'},{e:'Triple',i:'3️⃣'},{e:'Half',i:'½'},{e:'Quarter',i:'¼'},{e:'Plus',i:'➕'},{e:'Minus',i:'➖'},{e:'Equals',i:'🟰'},{e:'Multiply',i:'✖️'},{e:'Divide',i:'➗'},{e:'Percent',i:'💯'}],
-    [{e:'One',i:'1️⃣'},{e:'Two',i:'2️⃣'},{e:'Three',i:'3️⃣'},{e:'Four',i:'4️⃣'},{e:'Five',i:'5️⃣'},{e:'Ten',i:'🔟'},{e:'Twenty',i:'2️⃣0️⃣'},{e:'Hundred',i:'💯'},{e:'First',i:'🥇'},{e:'Zero',i:'0️⃣'}],
-    [{e:'Six',i:'6️⃣'},{e:'Seven',i:'7️⃣'},{e:'Eight',i:'8️⃣'},{e:'Nine',i:'9️⃣'},{e:'Eleven',i:'1️⃣1️⃣'},{e:'Twelve',i:'1️⃣2️⃣'},{e:'Thirty',i:'3️⃣0️⃣'},{e:'Fifty',i:'5️⃣0️⃣'},{e:'Second',i:'🥈'},{e:'Third',i:'🥉'}],
-    [{e:'Plus',i:'➕'},{e:'Minus',i:'➖'},{e:'Multiply',i:'✖️'},{e:'Divide',i:'➗'},{e:'Double',i:'2️⃣'},{e:'Half',i:'½'},{e:'Percent',i:'💯'},{e:'Equals',i:'🟰'},{e:'Forty',i:'4️⃣0️⃣'},{e:'Sixty',i:'6️⃣0️⃣'}],
-    [{e:'One',i:'1️⃣'},{e:'Five',i:'5️⃣'},{e:'Ten',i:'🔟'},{e:'Twenty',i:'2️⃣0️⃣'},{e:'Fifty',i:'5️⃣0️⃣'},{e:'Hundred',i:'💯'},{e:'First',i:'🥇'},{e:'Second',i:'🥈'},{e:'Third',i:'🥉'},{e:'Zero',i:'0️⃣'}],
-    [{e:'One',i:'1️⃣'},{e:'Two',i:'2️⃣'},{e:'Three',i:'3️⃣'},{e:'Four',i:'4️⃣'},{e:'Five',i:'5️⃣'},{e:'Ten',i:'🔟'},{e:'Twenty',i:'2️⃣0️⃣'},{e:'Hundred',i:'💯'},{e:'First',i:'🥇'},{e:'Plus',i:'➕'}]
+    [{e:'Eleven',i:'1️⃣1️⃣'},{e:'Twelve',i:'1️⃣2️⃣'},{e:'Twenty',i:'2️⃣0️⃣'},{e:'Thirty',i:'3️⃣0️⃣'},{e:'Fifty',i:'5️⃣0️⃣'},{e:'Hundred',i:'💯'},{e:'First',i:'🥇'},{e:'Second',i:'🥈'},{e:'Third',i:'🥉'},{e:'Zero',i:'0️⃣'}],
+    [{e:'Thirteen',i:'1️⃣3️⃣'},{e:'Fifteen',i:'1️⃣5️⃣'},{e:'Forty',i:'4️⃣0️⃣'},{e:'Sixty',i:'6️⃣0️⃣'},{e:'Eighty',i:'8️⃣0️⃣'},{e:'Ninety',i:'9️⃣0️⃣'},{e:'Fourth',i:'4️⃣'},{e:'Fifth',i:'5️⃣'},{e:'Tenth',i:'🔟'},{e:'Hundred',i:'💯'}],
+    [{e:'Plus',i:'➕'},{e:'Minus',i:'➖'},{e:'Multiply',i:'✖️'},{e:'Divide',i:'➗'},{e:'Equals',i:'🟰'},{e:'Percent',i:'💯'},{e:'Double',i:'2️⃣'},{e:'Triple',i:'3️⃣'},{e:'Half',i:'½'},{e:'Quarter',i:'¼'}],
+    [{e:'Thousand',i:'🔢'},{e:'Million',i:'💰'},{e:'Billion',i:'🌍'},{e:'Plus',i:'➕'},{e:'Minus',i:'➖'},{e:'Multiply',i:'✖️'},{e:'Divide',i:'➗'},{e:'Percent',i:'💯'},{e:'Half',i:'½'},{e:'Quarter',i:'¼'}],
+    [{e:'Plus',i:'➕'},{e:'Minus',i:'➖'},{e:'Double',i:'2️⃣'},{e:'Triple',i:'3️⃣'},{e:'Half',i:'½'},{e:'Quarter',i:'¼'},{e:'Percent',i:'💯'},{e:'Thousand',i:'🔢'},{e:'Multiply',i:'✖️'},{e:'Divide',i:'➗'}],
+    [{e:'Eleven',i:'1️⃣1️⃣'},{e:'Fifteen',i:'1️⃣5️⃣'},{e:'Eighteen',i:'1️⃣8️⃣'},{e:'Forty',i:'4️⃣0️⃣'},{e:'Seventy',i:'7️⃣0️⃣'},{e:'Plus',i:'➕'},{e:'Minus',i:'➖'},{e:'Half',i:'½'},{e:'Hundred',i:'💯'},{e:'Percent',i:'💯'}],
+    [{e:'Double',i:'2️⃣'},{e:'Triple',i:'3️⃣'},{e:'Quarter',i:'¼'},{e:'Thousand',i:'🔢'},{e:'Multiply',i:'✖️'},{e:'Divide',i:'➗'},{e:'Equals',i:'🟰'},{e:'Sixteen',i:'1️⃣6️⃣'},{e:'Ninety',i:'9️⃣0️⃣'},{e:'Billion',i:'🌍'}]
   ]},
+
   body:{n:'Body',i:'💪',c:'',lv:[
     [{e:'Eye',i:'👁️'},{e:'Ear',i:'👂'},{e:'Nose',i:'👃'},{e:'Mouth',i:'👄'},{e:'Hand',i:'✋'},{e:'Foot',i:'🦶'},{e:'Arm',i:'💪'},{e:'Leg',i:'🦵'},{e:'Head',i:'👤'},{e:'Hair',i:'💇'}],
-    [{e:'Tooth',i:'🦷'},{e:'Tongue',i:'👅'},{e:'Finger',i:'☝️'},{e:'Nail',i:'💅'},{e:'Knee',i:'🦵'},{e:'Elbow',i:'💪'},{e:'Shoulder',i:'🙆'},{e:'Back',i:'🚶'},{e:'Stomach',i:'🫃'},{e:'Heart',i:'❤️'}],
-    [{e:'Lip',i:'👄'},{e:'Chin',i:'🫦'},{e:'Cheek',i:'😊'},{e:'Forehead',i:'🤔'},{e:'Eyebrow',i:'🤨'},{e:'Wrist',i:'⌚'},{e:'Ankle',i:'🦶'},{e:'Hip',i:'🕺'},{e:'Chest',i:'🦺'},{e:'Thumb',i:'👍'}],
-    [{e:'Palm',i:'✋'},{e:'Heel',i:'🦶'},{e:'Toe',i:'🦶'},{e:'Calf',i:'🦵'},{e:'Thigh',i:'🦵'},{e:'Waist',i:'🩱'},{e:'Neck',i:'🧣'},{e:'Spine',i:'🦴'},{e:'Rib',i:'🦴'},{e:'Lung',i:'🫁'}],
-    [{e:'Brain',i:'🧠'},{e:'Kidney',i:'🫘'},{e:'Bone',i:'🦴'},{e:'Muscle',i:'💪'},{e:'Blood',i:'🩸'},{e:'Skin',i:'🧴'},{e:'Pupil',i:'👁️'},{e:'Eardrum',i:'👂'},{e:'Nostril',i:'👃'},{e:'Vein',i:'🩸'}],
-    [{e:'Eye',i:'👁️'},{e:'Ear',i:'👂'},{e:'Nose',i:'👃'},{e:'Hand',i:'✋'},{e:'Foot',i:'🦶'},{e:'Arm',i:'💪'},{e:'Leg',i:'🦵'},{e:'Head',i:'👤'},{e:'Heart',i:'❤️'},{e:'Tooth',i:'🦷'}],
-    [{e:'Finger',i:'☝️'},{e:'Knee',i:'🦵'},{e:'Shoulder',i:'🙆'},{e:'Stomach',i:'🫃'},{e:'Tongue',i:'👅'},{e:'Thumb',i:'👍'},{e:'Neck',i:'🧣'},{e:'Brain',i:'🧠'},{e:'Bone',i:'🦴'},{e:'Muscle',i:'💪'}],
-    [{e:'Eye',i:'👁️'},{e:'Ear',i:'👂'},{e:'Nose',i:'👃'},{e:'Mouth',i:'👄'},{e:'Tooth',i:'🦷'},{e:'Finger',i:'☝️'},{e:'Thumb',i:'👍'},{e:'Knee',i:'🦵'},{e:'Shoulder',i:'🙆'},{e:'Brain',i:'🧠'}],
-    [{e:'Hand',i:'✋'},{e:'Foot',i:'🦶'},{e:'Arm',i:'💪'},{e:'Leg',i:'🦵'},{e:'Heart',i:'❤️'},{e:'Bone',i:'🦴'},{e:'Muscle',i:'💪'},{e:'Lung',i:'🫁'},{e:'Skin',i:'🧴'},{e:'Neck',i:'🧣'}],
-    [{e:'Eye',i:'👁️'},{e:'Nose',i:'👃'},{e:'Hand',i:'✋'},{e:'Arm',i:'💪'},{e:'Head',i:'👤'},{e:'Heart',i:'❤️'},{e:'Brain',i:'🧠'},{e:'Tooth',i:'🦷'},{e:'Muscle',i:'💪'},{e:'Bone',i:'🦴'}]
+    [{e:'Tooth',i:'🦷'},{e:'Tongue',i:'👅'},{e:'Finger',i:'☝️'},{e:'Thumb',i:'👍'},{e:'Knee',i:'🦵'},{e:'Shoulder',i:'🙆'},{e:'Stomach',i:'🫃'},{e:'Heart',i:'❤️'},{e:'Back',i:'🚶'},{e:'Neck',i:'🧣'}],
+    [{e:'Eye',i:'👁️'},{e:'Ear',i:'👂'},{e:'Nose',i:'👃'},{e:'Mouth',i:'👄'},{e:'Hand',i:'✋'},{e:'Foot',i:'🦶'},{e:'Head',i:'👤'},{e:'Arm',i:'💪'},{e:'Leg',i:'🦵'},{e:'Tooth',i:'🦷'}],
+    [{e:'Finger',i:'☝️'},{e:'Thumb',i:'👍'},{e:'Knee',i:'🦵'},{e:'Shoulder',i:'🙆'},{e:'Stomach',i:'🫃'},{e:'Heart',i:'❤️'},{e:'Hair',i:'💇'},{e:'Tongue',i:'👅'},{e:'Back',i:'🚶'},{e:'Neck',i:'🧣'}],
+    [{e:'Eye',i:'👁️'},{e:'Nose',i:'👃'},{e:'Hand',i:'✋'},{e:'Foot',i:'🦶'},{e:'Head',i:'👤'},{e:'Arm',i:'💪'},{e:'Heart',i:'❤️'},{e:'Tooth',i:'🦷'},{e:'Finger',i:'☝️'},{e:'Knee',i:'🦵'}],
+    [{e:'Lip',i:'👄'},{e:'Chin',i:'🫦'},{e:'Cheek',i:'😊'},{e:'Forehead',i:'🤔'},{e:'Eyebrow',i:'🤨'},{e:'Wrist',i:'⌚'},{e:'Ankle',i:'🦶'},{e:'Hip',i:'🕺'},{e:'Chest',i:'🦺'},{e:'Elbow',i:'💪'}],
+    [{e:'Palm',i:'✋'},{e:'Heel',i:'🦶'},{e:'Toe',i:'🦶'},{e:'Waist',i:'🩱'},{e:'Nail',i:'💅'},{e:'Lip',i:'👄'},{e:'Chin',i:'🫦'},{e:'Wrist',i:'⌚'},{e:'Ankle',i:'🦶'},{e:'Elbow',i:'💪'}],
+    [{e:'Cheek',i:'😊'},{e:'Forehead',i:'🤔'},{e:'Eyebrow',i:'🤨'},{e:'Hip',i:'🕺'},{e:'Chest',i:'🦺'},{e:'Palm',i:'✋'},{e:'Heel',i:'🦶'},{e:'Toe',i:'🦶'},{e:'Waist',i:'🩱'},{e:'Nail',i:'💅'}],
+    [{e:'Lip',i:'👄'},{e:'Wrist',i:'⌚'},{e:'Ankle',i:'🦶'},{e:'Elbow',i:'💪'},{e:'Chin',i:'🫦'},{e:'Palm',i:'✋'},{e:'Heel',i:'🦶'},{e:'Hip',i:'🕺'},{e:'Toe',i:'🦶'},{e:'Nail',i:'💅'}],
+    [{e:'Forehead',i:'🤔'},{e:'Eyebrow',i:'🤨'},{e:'Chest',i:'🦺'},{e:'Waist',i:'🩱'},{e:'Cheek',i:'😊'},{e:'Lip',i:'👄'},{e:'Wrist',i:'⌚'},{e:'Ankle',i:'🦶'},{e:'Elbow',i:'💪'},{e:'Palm',i:'✋'}],
+    [{e:'Brain',i:'🧠'},{e:'Bone',i:'🦴'},{e:'Muscle',i:'💪'},{e:'Lung',i:'🫁'},{e:'Kidney',i:'🫘'},{e:'Spine',i:'🦴'},{e:'Rib',i:'🦴'},{e:'Blood',i:'🩸'},{e:'Skin',i:'🧴'},{e:'Vein',i:'🩸'}],
+    [{e:'Pupil',i:'👁️'},{e:'Eardrum',i:'👂'},{e:'Nostril',i:'👃'},{e:'Calf',i:'🦵'},{e:'Thigh',i:'🦵'},{e:'Brain',i:'🧠'},{e:'Bone',i:'🦴'},{e:'Muscle',i:'💪'},{e:'Lung',i:'🫁'},{e:'Kidney',i:'🫘'}],
+    [{e:'Brain',i:'🧠'},{e:'Lung',i:'🫁'},{e:'Bone',i:'🦴'},{e:'Muscle',i:'💪'},{e:'Kidney',i:'🫘'},{e:'Spine',i:'🦴'},{e:'Blood',i:'🩸'},{e:'Skin',i:'🧴'},{e:'Calf',i:'🦵'},{e:'Thigh',i:'🦵'}],
+    [{e:'Pupil',i:'👁️'},{e:'Eardrum',i:'👂'},{e:'Rib',i:'🦴'},{e:'Vein',i:'🩸'},{e:'Nostril',i:'👃'},{e:'Brain',i:'🧠'},{e:'Bone',i:'🦴'},{e:'Lung',i:'🫁'},{e:'Muscle',i:'💪'},{e:'Spine',i:'🦴'}],
+    [{e:'Brain',i:'🧠'},{e:'Kidney',i:'🫘'},{e:'Lung',i:'🫁'},{e:'Bone',i:'🦴'},{e:'Muscle',i:'💪'},{e:'Blood',i:'🩸'},{e:'Skin',i:'🧴'},{e:'Vein',i:'🩸'},{e:'Calf',i:'🦵'},{e:'Pupil',i:'👁️'}]
   ]},
+
   vehicles:{n:'Vehicles',i:'🚗',c:'ylw-card',lv:[
-    [{e:'Car',i:'🚗'},{e:'Plane',i:'✈️'},{e:'Ship',i:'🚢'},{e:'Bus',i:'🚌'},{e:'Bike',i:'🚲'},{e:'Train',i:'🚂'},{e:'Rocket',i:'🚀'},{e:'Helicopter',i:'🚁'},{e:'Truck',i:'🚚'},{e:'Tractor',i:'🚜'}],
-    [{e:'Motorcycle',i:'🏍️'},{e:'Taxi',i:'🚕'},{e:'Ambulance',i:'🚑'},{e:'Fire Truck',i:'🚒'},{e:'Police Car',i:'🚓'},{e:'Sailboat',i:'⛵'},{e:'Submarine',i:'🤿'},{e:'Scooter',i:'🛵'},{e:'Balloon',i:'🎈'},{e:'Cable Car',i:'🚡'}],
-    [{e:'Canoe',i:'🛶'},{e:'Speedboat',i:'🚤'},{e:'Ferry',i:'⛴️'},{e:'Cruise Ship',i:'🚢'},{e:'Yacht',i:'⛵'},{e:'UFO',i:'🛸'},{e:'Spacecraft',i:'🚀'},{e:'Satellite',i:'🛰️'},{e:'Glider',i:'🪂'},{e:'Drone',i:'🚁'}],
-    [{e:'Bulldozer',i:'🚜'},{e:'Crane',i:'🏗️'},{e:'Dump Truck',i:'🚚'},{e:'Forklift',i:'🔩'},{e:'Road Roller',i:'🚜'},{e:'Car',i:'🚗'},{e:'Plane',i:'✈️'},{e:'Train',i:'🚂'},{e:'Rocket',i:'🚀'},{e:'Helicopter',i:'🚁'}],
-    [{e:'Bus',i:'🚌'},{e:'Truck',i:'🚚'},{e:'Bike',i:'🚲'},{e:'Taxi',i:'🚕'},{e:'Motorcycle',i:'🏍️'},{e:'Ambulance',i:'🚑'},{e:'Sailboat',i:'⛵'},{e:'Submarine',i:'🤿'},{e:'Scooter',i:'🛵'},{e:'Tractor',i:'🚜'}],
-    [{e:'Canoe',i:'🛶'},{e:'UFO',i:'🛸'},{e:'Drone',i:'🚁'},{e:'Bulldozer',i:'🚜'},{e:'Car',i:'🚗'},{e:'Plane',i:'✈️'},{e:'Ship',i:'🚢'},{e:'Rocket',i:'🚀'},{e:'Bike',i:'🚲'},{e:'Train',i:'🚂'}],
-    [{e:'Helicopter',i:'🚁'},{e:'Motorcycle',i:'🏍️'},{e:'Taxi',i:'🚕'},{e:'Truck',i:'🚚'},{e:'Tractor',i:'🚜'},{e:'Scooter',i:'🛵'},{e:'Balloon',i:'🎈'},{e:'Canoe',i:'🛶'},{e:'Sailboat',i:'⛵'},{e:'Submarine',i:'🤿'}],
-    [{e:'Car',i:'🚗'},{e:'Bus',i:'🚌'},{e:'Plane',i:'✈️'},{e:'Train',i:'🚂'},{e:'Bike',i:'🚲'},{e:'Ship',i:'🚢'},{e:'Ambulance',i:'🚑'},{e:'Fire Truck',i:'🚒'},{e:'Police Car',i:'🚓'},{e:'Rocket',i:'🚀'}],
-    [{e:'UFO',i:'🛸'},{e:'Spacecraft',i:'🚀'},{e:'Satellite',i:'🛰️'},{e:'Drone',i:'🚁'},{e:'Glider',i:'🪂'},{e:'Speedboat',i:'🚤'},{e:'Ferry',i:'⛴️'},{e:'Yacht',i:'⛵'},{e:'Crane',i:'🏗️'},{e:'Bulldozer',i:'🚜'}],
-    [{e:'Car',i:'🚗'},{e:'Plane',i:'✈️'},{e:'Train',i:'🚂'},{e:'Rocket',i:'🚀'},{e:'Helicopter',i:'🚁'},{e:'Ship',i:'🚢'},{e:'Ambulance',i:'🚑'},{e:'Bike',i:'🚲'},{e:'Bus',i:'🚌'},{e:'UFO',i:'🛸'}]
+    [{e:'Car',i:'🚗'},{e:'Bus',i:'🚌'},{e:'Train',i:'🚂'},{e:'Plane',i:'✈️'},{e:'Bike',i:'🚲'},{e:'Truck',i:'🚚'},{e:'Taxi',i:'🚕'},{e:'Ship',i:'🚢'},{e:'Rocket',i:'🚀'},{e:'Helicopter',i:'🚁'}],
+    [{e:'Ambulance',i:'🚑'},{e:'Fire Truck',i:'🚒'},{e:'Police Car',i:'🚓'},{e:'Tractor',i:'🚜'},{e:'Motorcycle',i:'🏍️'},{e:'Scooter',i:'🛵'},{e:'Balloon',i:'🎈'},{e:'Sailboat',i:'⛵'},{e:'Bicycle',i:'🚲'},{e:'Van',i:'🚐'}],
+    [{e:'Car',i:'🚗'},{e:'Bus',i:'🚌'},{e:'Train',i:'🚂'},{e:'Plane',i:'✈️'},{e:'Bike',i:'🚲'},{e:'Ship',i:'🚢'},{e:'Ambulance',i:'🚑'},{e:'Fire Truck',i:'🚒'},{e:'Rocket',i:'🚀'},{e:'Taxi',i:'🚕'}],
+    [{e:'Helicopter',i:'🚁'},{e:'Truck',i:'🚚'},{e:'Tractor',i:'🚜'},{e:'Motorcycle',i:'🏍️'},{e:'Scooter',i:'🛵'},{e:'Police Car',i:'🚓'},{e:'Sailboat',i:'⛵'},{e:'Balloon',i:'🎈'},{e:'Van',i:'🚐'},{e:'Bus',i:'🚌'}],
+    [{e:'Car',i:'🚗'},{e:'Plane',i:'✈️'},{e:'Train',i:'🚂'},{e:'Bus',i:'🚌'},{e:'Truck',i:'🚚'},{e:'Ambulance',i:'🚑'},{e:'Fire Truck',i:'🚒'},{e:'Rocket',i:'🚀'},{e:'Bike',i:'🚲'},{e:'Helicopter',i:'🚁'}],
+    [{e:'Submarine',i:'🤿'},{e:'Cable Car',i:'🚡'},{e:'Canoe',i:'🛶'},{e:'Speedboat',i:'🚤'},{e:'Ferry',i:'⛴️'},{e:'Drone',i:'🚁'},{e:'Glider',i:'🪂'},{e:'UFO',i:'🛸'},{e:'Spacecraft',i:'🚀'},{e:'Yacht',i:'⛵'}],
+    [{e:'Bulldozer',i:'🚜'},{e:'Crane',i:'🏗️'},{e:'Forklift',i:'🔩'},{e:'Dump Truck',i:'🚚'},{e:'Submarine',i:'🤿'},{e:'Ferry',i:'⛴️'},{e:'Canoe',i:'🛶'},{e:'Cable Car',i:'🚡'},{e:'Drone',i:'🚁'},{e:'Glider',i:'🪂'}],
+    [{e:'UFO',i:'🛸'},{e:'Yacht',i:'⛵'},{e:'Speedboat',i:'🚤'},{e:'Submarine',i:'🤿'},{e:'Ferry',i:'⛴️'},{e:'Bulldozer',i:'🚜'},{e:'Crane',i:'🏗️'},{e:'Canoe',i:'🛶'},{e:'Drone',i:'🚁'},{e:'Cable Car',i:'🚡'}],
+    [{e:'Glider',i:'🪂'},{e:'Forklift',i:'🔩'},{e:'Dump Truck',i:'🚚'},{e:'Speedboat',i:'🚤'},{e:'Yacht',i:'⛵'},{e:'UFO',i:'🛸'},{e:'Submarine',i:'🤿'},{e:'Bulldozer',i:'🚜'},{e:'Crane',i:'🏗️'},{e:'Ferry',i:'⛴️'}],
+    [{e:'Submarine',i:'🤿'},{e:'UFO',i:'🛸'},{e:'Glider',i:'🪂'},{e:'Canoe',i:'🛶'},{e:'Speedboat',i:'🚤'},{e:'Ferry',i:'⛴️'},{e:'Drone',i:'🚁'},{e:'Yacht',i:'⛵'},{e:'Bulldozer',i:'🚜'},{e:'Cable Car',i:'🚡'}],
+    [{e:'Satellite',i:'🛰️'},{e:'Zeppelin',i:'🛸'},{e:'Hovercraft',i:'🚤'},{e:'Monorail',i:'🚝'},{e:'Tram',i:'🚋'},{e:'Funicular',i:'🚞'},{e:'Rickshaw',i:'🛺'},{e:'Parachute',i:'🪂'},{e:'Jet Ski',i:'🚤'},{e:'Tanker',i:'🛢️'}],
+    [{e:'Satellite',i:'🛰️'},{e:'Monorail',i:'🚝'},{e:'Tram',i:'🚋'},{e:'Rickshaw',i:'🛺'},{e:'Parachute',i:'🪂'},{e:'Funicular',i:'🚞'},{e:'Hovercraft',i:'🚤'},{e:'Zeppelin',i:'🛸'},{e:'Jet Ski',i:'🚤'},{e:'Tanker',i:'🛢️'}],
+    [{e:'Satellite',i:'🛰️'},{e:'Tram',i:'🚋'},{e:'Monorail',i:'🚝'},{e:'Parachute',i:'🪂'},{e:'Rickshaw',i:'🛺'},{e:'Hovercraft',i:'🚤'},{e:'Zeppelin',i:'🛸'},{e:'Funicular',i:'🚞'},{e:'Tanker',i:'🛢️'},{e:'Jet Ski',i:'🚤'}],
+    [{e:'Monorail',i:'🚝'},{e:'Satellite',i:'🛰️'},{e:'Zeppelin',i:'🛸'},{e:'Tram',i:'🚋'},{e:'Funicular',i:'🚞'},{e:'Rickshaw',i:'🛺'},{e:'Parachute',i:'🪂'},{e:'Hovercraft',i:'🚤'},{e:'Jet Ski',i:'🚤'},{e:'Tanker',i:'🛢️'}],
+    [{e:'Satellite',i:'🛰️'},{e:'Tram',i:'🚋'},{e:'Rickshaw',i:'🛺'},{e:'Zeppelin',i:'🛸'},{e:'Monorail',i:'🚝'},{e:'Funicular',i:'🚞'},{e:'Hovercraft',i:'🚤'},{e:'Parachute',i:'🪂'},{e:'Tanker',i:'🛢️'},{e:'Jet Ski',i:'🚤'}]
   ]},
+
   food:{n:'Food',i:'🍕',c:'red-card',lv:[
-    [{e:'Pizza',i:'🍕'},{e:'Burger',i:'🍔'},{e:'Bread',i:'🍞'},{e:'Rice',i:'🍚'},{e:'Noodle',i:'🍜'},{e:'Soup',i:'🍲'},{e:'Salad',i:'🥗'},{e:'Sandwich',i:'🥪'},{e:'Egg',i:'🥚'},{e:'Cheese',i:'🧀'}],
-    [{e:'Butter',i:'🧈'},{e:'Milk',i:'🥛'},{e:'Juice',i:'🧃'},{e:'Water',i:'💧'},{e:'Tea',i:'🍵'},{e:'Cookie',i:'🍪'},{e:'Cake',i:'🎂'},{e:'Ice Cream',i:'🍦'},{e:'Candy',i:'🍬'},{e:'Chocolate',i:'🍫'}],
-    [{e:'Taco',i:'🌮'},{e:'Burrito',i:'🌯'},{e:'Hot Dog',i:'🌭'},{e:'French Fries',i:'🍟'},{e:'Popcorn',i:'🍿'},{e:'Waffle',i:'🧇'},{e:'Pancake',i:'🥞'},{e:'Croissant',i:'🥐'},{e:'Pretzel',i:'🥨'},{e:'Bagel',i:'🥯'}],
-    [{e:'Sushi',i:'🍣'},{e:'Ramen',i:'🍜'},{e:'Dumpling',i:'🥟'},{e:'Curry',i:'🍛'},{e:'Steak',i:'🥩'},{e:'Chicken',i:'🍗'},{e:'Fish',i:'🐟'},{e:'Shrimp',i:'🍤'},{e:'Bacon',i:'🥓'},{e:'Meatball',i:'🍝'}],
-    [{e:'Carrot',i:'🥕'},{e:'Corn',i:'🌽'},{e:'Potato',i:'🥔'},{e:'Broccoli',i:'🥦'},{e:'Pea',i:'🫛'},{e:'Onion',i:'🧅'},{e:'Garlic',i:'🧄'},{e:'Pepper',i:'🫑'},{e:'Mushroom',i:'🍄'},{e:'Cucumber',i:'🥒'}],
-    [{e:'Pizza',i:'🍕'},{e:'Burger',i:'🍔'},{e:'Bread',i:'🍞'},{e:'Egg',i:'🥚'},{e:'Milk',i:'🥛'},{e:'Cake',i:'🎂'},{e:'Ice Cream',i:'🍦'},{e:'Cookie',i:'🍪'},{e:'Chocolate',i:'🍫'},{e:'Candy',i:'🍬'}],
-    [{e:'Taco',i:'🌮'},{e:'Hot Dog',i:'🌭'},{e:'French Fries',i:'🍟'},{e:'Waffle',i:'🧇'},{e:'Pancake',i:'🥞'},{e:'Sushi',i:'🍣'},{e:'Ramen',i:'🍜'},{e:'Curry',i:'🍛'},{e:'Steak',i:'🥩'},{e:'Chicken',i:'🍗'}],
-    [{e:'Carrot',i:'🥕'},{e:'Corn',i:'🌽'},{e:'Potato',i:'🥔'},{e:'Broccoli',i:'🥦'},{e:'Mushroom',i:'🍄'},{e:'Cheese',i:'🧀'},{e:'Butter',i:'🧈'},{e:'Juice',i:'🧃'},{e:'Tea',i:'🍵'},{e:'Water',i:'💧'}],
-    [{e:'Pizza',i:'🍕'},{e:'Sushi',i:'🍣'},{e:'Taco',i:'🌮'},{e:'Burger',i:'🍔'},{e:'Ice Cream',i:'🍦'},{e:'Cake',i:'🎂'},{e:'Popcorn',i:'🍿'},{e:'Chocolate',i:'🍫'},{e:'Cookie',i:'🍪'},{e:'Waffle',i:'🧇'}],
-    [{e:'Pizza',i:'🍕'},{e:'Burger',i:'🍔'},{e:'Rice',i:'🍚'},{e:'Egg',i:'🥚'},{e:'Milk',i:'🥛'},{e:'Bread',i:'🍞'},{e:'Chicken',i:'🍗'},{e:'Carrot',i:'🥕'},{e:'Corn',i:'🌽'},{e:'Ice Cream',i:'🍦'}]
+    [{e:'Bread',i:'🍞'},{e:'Milk',i:'🥛'},{e:'Egg',i:'🥚'},{e:'Rice',i:'🍚'},{e:'Soup',i:'🍲'},{e:'Cake',i:'🎂'},{e:'Cookie',i:'🍪'},{e:'Candy',i:'🍬'},{e:'Juice',i:'🧃'},{e:'Water',i:'💧'}],
+    [{e:'Pizza',i:'🍕'},{e:'Burger',i:'🍔'},{e:'Sandwich',i:'🥪'},{e:'Ice Cream',i:'🍦'},{e:'Chocolate',i:'🍫'},{e:'Cheese',i:'🧀'},{e:'Butter',i:'🧈'},{e:'Tea',i:'🍵'},{e:'Salad',i:'🥗'},{e:'Noodle',i:'🍜'}],
+    [{e:'Bread',i:'🍞'},{e:'Milk',i:'🥛'},{e:'Egg',i:'🥚'},{e:'Rice',i:'🍚'},{e:'Cake',i:'🎂'},{e:'Cookie',i:'🍪'},{e:'Juice',i:'🧃'},{e:'Pizza',i:'🍕'},{e:'Burger',i:'🍔'},{e:'Ice Cream',i:'🍦'}],
+    [{e:'Soup',i:'🍲'},{e:'Candy',i:'🍬'},{e:'Water',i:'💧'},{e:'Cheese',i:'🧀'},{e:'Sandwich',i:'🥪'},{e:'Chocolate',i:'🍫'},{e:'Butter',i:'🧈'},{e:'Tea',i:'🍵'},{e:'Salad',i:'🥗'},{e:'Noodle',i:'🍜'}],
+    [{e:'Bread',i:'🍞'},{e:'Milk',i:'🥛'},{e:'Pizza',i:'🍕'},{e:'Burger',i:'🍔'},{e:'Egg',i:'🥚'},{e:'Ice Cream',i:'🍦'},{e:'Cookie',i:'🍪'},{e:'Cake',i:'🎂'},{e:'Juice',i:'🧃'},{e:'Chocolate',i:'🍫'}],
+    [{e:'Carrot',i:'🥕'},{e:'Corn',i:'🌽'},{e:'Potato',i:'🥔'},{e:'Broccoli',i:'🥦'},{e:'Mushroom',i:'🍄'},{e:'Cucumber',i:'🥒'},{e:'Onion',i:'🧅'},{e:'Pepper',i:'🫑'},{e:'Pea',i:'🫛'},{e:'Garlic',i:'🧄'}],
+    [{e:'Hot Dog',i:'🌭'},{e:'French Fries',i:'🍟'},{e:'Pancake',i:'🥞'},{e:'Waffle',i:'🧇'},{e:'Popcorn',i:'🍿'},{e:'Taco',i:'🌮'},{e:'Chicken',i:'🍗'},{e:'Fish',i:'🐟'},{e:'Steak',i:'🥩'},{e:'Bacon',i:'🥓'}],
+    [{e:'Carrot',i:'🥕'},{e:'Corn',i:'🌽'},{e:'Potato',i:'🥔'},{e:'Broccoli',i:'🥦'},{e:'Mushroom',i:'🍄'},{e:'Hot Dog',i:'🌭'},{e:'French Fries',i:'🍟'},{e:'Pancake',i:'🥞'},{e:'Chicken',i:'🍗'},{e:'Steak',i:'🥩'}],
+    [{e:'Cucumber',i:'🥒'},{e:'Onion',i:'🧅'},{e:'Pepper',i:'🫑'},{e:'Garlic',i:'🧄'},{e:'Waffle',i:'🧇'},{e:'Popcorn',i:'🍿'},{e:'Taco',i:'🌮'},{e:'Fish',i:'🐟'},{e:'Bacon',i:'🥓'},{e:'Pea',i:'🫛'}],
+    [{e:'Carrot',i:'🥕'},{e:'Corn',i:'🌽'},{e:'Mushroom',i:'🍄'},{e:'Hot Dog',i:'🌭'},{e:'Pancake',i:'🥞'},{e:'Chicken',i:'🍗'},{e:'Taco',i:'🌮'},{e:'Steak',i:'🥩'},{e:'Broccoli',i:'🥦'},{e:'Waffle',i:'🧇'}],
+    [{e:'Sushi',i:'🍣'},{e:'Ramen',i:'🍜'},{e:'Curry',i:'🍛'},{e:'Dumpling',i:'🥟'},{e:'Croissant',i:'🥐'},{e:'Pretzel',i:'🥨'},{e:'Bagel',i:'🥯'},{e:'Burrito',i:'🌯'},{e:'Meatball',i:'🍝'},{e:'Shrimp',i:'🍤'}],
+    [{e:'Paella',i:'🍳'},{e:'Fondue',i:'🫕'},{e:'Kebab',i:'🥙'},{e:'Falafel',i:'🧆'},{e:'Pho',i:'🍜'},{e:'Sushi',i:'🍣'},{e:'Ramen',i:'🍜'},{e:'Curry',i:'🍛'},{e:'Dumpling',i:'🥟'},{e:'Burrito',i:'🌯'}],
+    [{e:'Croissant',i:'🥐'},{e:'Pretzel',i:'🥨'},{e:'Bagel',i:'🥯'},{e:'Shrimp',i:'🍤'},{e:'Meatball',i:'🍝'},{e:'Fondue',i:'🫕'},{e:'Kebab',i:'🥙'},{e:'Falafel',i:'🧆'},{e:'Sushi',i:'🍣'},{e:'Ramen',i:'🍜'}],
+    [{e:'Curry',i:'🍛'},{e:'Dumpling',i:'🥟'},{e:'Burrito',i:'🌯'},{e:'Paella',i:'🍳'},{e:'Pho',i:'🍜'},{e:'Croissant',i:'🥐'},{e:'Pretzel',i:'🥨'},{e:'Meatball',i:'🍝'},{e:'Shrimp',i:'🍤'},{e:'Falafel',i:'🧆'}],
+    [{e:'Sushi',i:'🍣'},{e:'Ramen',i:'🍜'},{e:'Curry',i:'🍛'},{e:'Fondue',i:'🫕'},{e:'Kebab',i:'🥙'},{e:'Dumpling',i:'🥟'},{e:'Burrito',i:'🌯'},{e:'Bagel',i:'🥯'},{e:'Paella',i:'🍳'},{e:'Pho',i:'🍜'}]
   ]},
+
   emojis:{n:'Emoji Mix',i:'🤪',c:'',lv:[
-    [{e:'Happy',i:'😊'},{e:'Angry',i:'😡'},{e:'Sad',i:'😢'},{e:'Cool',i:'😎'},{e:'Sick',i:'🤢'},{e:'Ghost',i:'👻'},{e:'Laugh',i:'😂'},{e:'Scared',i:'😱'},{e:'Sleepy',i:'😴'},{e:'Surprised',i:'😲'}],
-    [{e:'Bored',i:'🥱'},{e:'Silly',i:'🤪'},{e:'Nervous',i:'😬'},{e:'Love',i:'😍'},{e:'Thinking',i:'🤔'},{e:'Winking',i:'😉'},{e:'Crying',i:'😭'},{e:'Star Eyes',i:'🤩'},{e:'Confused',i:'😕'},{e:'Shy',i:'🫣'}],
-    [{e:'Dizzy',i:'😵'},{e:'Explode',i:'🤯'},{e:'Monocle',i:'🧐'},{e:'Smirk',i:'😏'},{e:'Pout',i:'😤'},{e:'Pleading',i:'🥺'},{e:'Hugging',i:'🤗'},{e:'Shush',i:'🤫'},{e:'Lying',i:'🤥'},{e:'Sunglasses',i:'🥸'}],
-    [{e:'Robot',i:'🤖'},{e:'Alien',i:'👽'},{e:'Clown',i:'🤡'},{e:'Zombie',i:'🧟'},{e:'Devil',i:'😈'},{e:'Angel',i:'😇'},{e:'Cowboy',i:'🤠'},{e:'Ninja',i:'🥷'},{e:'Vampire',i:'🧛'},{e:'Pirate',i:'🏴‍☠️'}],
-    [{e:'Thumbs Up',i:'👍'},{e:'Wave',i:'👋'},{e:'Clap',i:'👏'},{e:'Peace',i:'✌️'},{e:'Ok',i:'👌'},{e:'Fist',i:'✊'},{e:'Point',i:'👆'},{e:'Hugging',i:'🤗'},{e:'Shrug',i:'🤷'},{e:'Facepalm',i:'🤦'}],
-    [{e:'Happy',i:'😊'},{e:'Sad',i:'😢'},{e:'Angry',i:'😡'},{e:'Laugh',i:'😂'},{e:'Cool',i:'😎'},{e:'Scared',i:'😱'},{e:'Love',i:'😍'},{e:'Thinking',i:'🤔'},{e:'Silly',i:'🤪'},{e:'Sleepy',i:'😴'}],
-    [{e:'Ghost',i:'👻'},{e:'Robot',i:'🤖'},{e:'Alien',i:'👽'},{e:'Clown',i:'🤡'},{e:'Angel',i:'😇'},{e:'Devil',i:'😈'},{e:'Cowboy',i:'🤠'},{e:'Ninja',i:'🥷'},{e:'Dizzy',i:'😵'},{e:'Star Eyes',i:'🤩'}],
-    [{e:'Thumbs Up',i:'👍'},{e:'Wave',i:'👋'},{e:'Clap',i:'👏'},{e:'Peace',i:'✌️'},{e:'Ok',i:'👌'},{e:'Fist',i:'✊'},{e:'Point',i:'👆'},{e:'Pleading',i:'🥺'},{e:'Shush',i:'🤫'},{e:'Shrug',i:'🤷'}],
-    [{e:'Happy',i:'😊'},{e:'Sad',i:'😢'},{e:'Laugh',i:'😂'},{e:'Cool',i:'😎'},{e:'Love',i:'😍'},{e:'Ghost',i:'👻'},{e:'Robot',i:'🤖'},{e:'Angel',i:'😇'},{e:'Thumbs Up',i:'👍'},{e:'Clap',i:'👏'}],
-    [{e:'Happy',i:'😊'},{e:'Angry',i:'😡'},{e:'Sad',i:'😢'},{e:'Laugh',i:'😂'},{e:'Scared',i:'😱'},{e:'Love',i:'😍'},{e:'Silly',i:'🤪'},{e:'Cool',i:'😎'},{e:'Ghost',i:'👻'},{e:'Star Eyes',i:'🤩'}]
+    [{e:'Happy',i:'😊'},{e:'Sad',i:'😢'},{e:'Angry',i:'😡'},{e:'Laugh',i:'😂'},{e:'Scared',i:'😱'},{e:'Sleepy',i:'😴'},{e:'Sick',i:'🤢'},{e:'Love',i:'😍'},{e:'Cool',i:'😎'},{e:'Surprised',i:'😲'}],
+    [{e:'Ghost',i:'👻'},{e:'Silly',i:'🤪'},{e:'Winking',i:'😉'},{e:'Crying',i:'😭'},{e:'Thinking',i:'🤔'},{e:'Star Eyes',i:'🤩'},{e:'Thumbs Up',i:'👍'},{e:'Wave',i:'👋'},{e:'Clap',i:'👏'},{e:'Peace',i:'✌️'}],
+    [{e:'Happy',i:'😊'},{e:'Sad',i:'😢'},{e:'Angry',i:'😡'},{e:'Laugh',i:'😂'},{e:'Love',i:'😍'},{e:'Cool',i:'😎'},{e:'Ghost',i:'👻'},{e:'Sleepy',i:'😴'},{e:'Scared',i:'😱'},{e:'Thumbs Up',i:'👍'}],
+    [{e:'Silly',i:'🤪'},{e:'Winking',i:'😉'},{e:'Crying',i:'😭'},{e:'Thinking',i:'🤔'},{e:'Star Eyes',i:'🤩'},{e:'Wave',i:'👋'},{e:'Clap',i:'👏'},{e:'Peace',i:'✌️'},{e:'Sick',i:'🤢'},{e:'Surprised',i:'😲'}],
+    [{e:'Happy',i:'😊'},{e:'Sad',i:'😢'},{e:'Laugh',i:'😂'},{e:'Love',i:'😍'},{e:'Ghost',i:'👻'},{e:'Cool',i:'😎'},{e:'Thumbs Up',i:'👍'},{e:'Star Eyes',i:'🤩'},{e:'Thinking',i:'🤔'},{e:'Winking',i:'😉'}],
+    [{e:'Bored',i:'🥱'},{e:'Nervous',i:'😬'},{e:'Confused',i:'😕'},{e:'Shy',i:'🫣'},{e:'Pleading',i:'🥺'},{e:'Hugging',i:'🤗'},{e:'Shush',i:'🤫'},{e:'Shrug',i:'🤷'},{e:'Facepalm',i:'🤦'},{e:'Point',i:'👆'}],
+    [{e:'Robot',i:'🤖'},{e:'Alien',i:'👽'},{e:'Clown',i:'🤡'},{e:'Angel',i:'😇'},{e:'Devil',i:'😈'},{e:'Cowboy',i:'🤠'},{e:'Ninja',i:'🥷'},{e:'Ok',i:'👌'},{e:'Fist',i:'✊'},{e:'Bored',i:'🥱'}],
+    [{e:'Nervous',i:'😬'},{e:'Confused',i:'😕'},{e:'Shy',i:'🫣'},{e:'Pleading',i:'🥺'},{e:'Hugging',i:'🤗'},{e:'Robot',i:'🤖'},{e:'Angel',i:'😇'},{e:'Devil',i:'😈'},{e:'Cowboy',i:'🤠'},{e:'Ninja',i:'🥷'}],
+    [{e:'Shush',i:'🤫'},{e:'Shrug',i:'🤷'},{e:'Facepalm',i:'🤦'},{e:'Point',i:'👆'},{e:'Ok',i:'👌'},{e:'Fist',i:'✊'},{e:'Alien',i:'👽'},{e:'Clown',i:'🤡'},{e:'Bored',i:'🥱'},{e:'Nervous',i:'😬'}],
+    [{e:'Robot',i:'🤖'},{e:'Angel',i:'😇'},{e:'Cowboy',i:'🤠'},{e:'Ninja',i:'🥷'},{e:'Confused',i:'😕'},{e:'Shy',i:'🫣'},{e:'Hugging',i:'🤗'},{e:'Shrug',i:'🤷'},{e:'Facepalm',i:'🤦'},{e:'Pleading',i:'🥺'}],
+    [{e:'Dizzy',i:'😵'},{e:'Explode',i:'🤯'},{e:'Monocle',i:'🧐'},{e:'Smirk',i:'😏'},{e:'Pout',i:'😤'},{e:'Lying',i:'🤥'},{e:'Sunglasses',i:'🥸'},{e:'Vampire',i:'🧛'},{e:'Zombie',i:'🧟'},{e:'Pirate',i:'🏴‍☠️'}],
+    [{e:'Dizzy',i:'😵'},{e:'Monocle',i:'🧐'},{e:'Smirk',i:'😏'},{e:'Pout',i:'😤'},{e:'Lying',i:'🤥'},{e:'Explode',i:'🤯'},{e:'Sunglasses',i:'🥸'},{e:'Vampire',i:'🧛'},{e:'Zombie',i:'🧟'},{e:'Pirate',i:'🏴‍☠️'}],
+    [{e:'Explode',i:'🤯'},{e:'Smirk',i:'😏'},{e:'Lying',i:'🤥'},{e:'Dizzy',i:'😵'},{e:'Monocle',i:'🧐'},{e:'Pout',i:'😤'},{e:'Sunglasses',i:'🥸'},{e:'Zombie',i:'🧟'},{e:'Vampire',i:'🧛'},{e:'Pirate',i:'🏴‍☠️'}],
+    [{e:'Dizzy',i:'😵'},{e:'Explode',i:'🤯'},{e:'Vampire',i:'🧛'},{e:'Zombie',i:'🧟'},{e:'Smirk',i:'😏'},{e:'Lying',i:'🤥'},{e:'Monocle',i:'🧐'},{e:'Pout',i:'😤'},{e:'Pirate',i:'🏴‍☠️'},{e:'Sunglasses',i:'🥸'}],
+    [{e:'Dizzy',i:'😵'},{e:'Smirk',i:'😏'},{e:'Lying',i:'🤥'},{e:'Explode',i:'🤯'},{e:'Pirate',i:'🏴‍☠️'},{e:'Monocle',i:'🧐'},{e:'Zombie',i:'🧟'},{e:'Vampire',i:'🧛'},{e:'Pout',i:'😤'},{e:'Sunglasses',i:'🥸'}]
   ]},
+
   jobs:{n:'Jobs',i:'👨‍⚕️',c:'ylw-card',lv:[
-    [{e:'Doctor',i:'👨‍⚕️'},{e:'Teacher',i:'👨‍🏫'},{e:'Police',i:'👮'},{e:'Firefighter',i:'👨‍🚒'},{e:'Chef',i:'👨‍🍳'},{e:'Pilot',i:'👨‍✈️'},{e:'Farmer',i:'👨‍🌾'},{e:'Artist',i:'👨‍🎨'},{e:'Astronaut',i:'👨‍🚀'},{e:'Scientist',i:'👨‍🔬'}],
-    [{e:'Nurse',i:'👩‍⚕️'},{e:'Engineer',i:'👨‍🔧'},{e:'Dentist',i:'🦷'},{e:'Vet',i:'🐾'},{e:'Baker',i:'🥖'},{e:'Barber',i:'💈'},{e:'Singer',i:'🎤'},{e:'Dancer',i:'💃'},{e:'Painter',i:'🖌️'},{e:'Builder',i:'🏗️'}],
-    [{e:'Driver',i:'🚗'},{e:'Captain',i:'⚓'},{e:'Judge',i:'⚖️'},{e:'Lawyer',i:'📋'},{e:'Architect',i:'📐'},{e:'Librarian',i:'📚'},{e:'Journalist',i:'📰'},{e:'Photographer',i:'📷'},{e:'Actor',i:'🎭'},{e:'Musician',i:'🎵'}],
-    [{e:'Plumber',i:'🔧'},{e:'Electrician',i:'⚡'},{e:'Mechanic',i:'🔩'},{e:'Carpenter',i:'🪵'},{e:'Tailor',i:'✂️'},{e:'Florist',i:'💐'},{e:'Gardener',i:'🌱'},{e:'Cleaner',i:'🧹'},{e:'Waiter',i:'🍽️'},{e:'Cashier',i:'💰'}],
-    [{e:'Coach',i:'🏅'},{e:'Referee',i:'⚽'},{e:'Swimmer',i:'🏊'},{e:'Runner',i:'🏃'},{e:'Gymnast',i:'🤸'},{e:'Boxer',i:'🥊'},{e:'Cyclist',i:'🚴'},{e:'Archer',i:'🏹'},{e:'Skater',i:'⛸️'},{e:'Climber',i:'🧗'}],
-    [{e:'Doctor',i:'👨‍⚕️'},{e:'Teacher',i:'👨‍🏫'},{e:'Police',i:'👮'},{e:'Firefighter',i:'👨‍🚒'},{e:'Chef',i:'👨‍🍳'},{e:'Pilot',i:'👨‍✈️'},{e:'Astronaut',i:'👨‍🚀'},{e:'Nurse',i:'👩‍⚕️'},{e:'Baker',i:'🥖'},{e:'Singer',i:'🎤'}],
-    [{e:'Engineer',i:'👨‍🔧'},{e:'Farmer',i:'👨‍🌾'},{e:'Artist',i:'👨‍🎨'},{e:'Scientist',i:'👨‍🔬'},{e:'Driver',i:'🚗'},{e:'Captain',i:'⚓'},{e:'Lawyer',i:'📋'},{e:'Musician',i:'🎵'},{e:'Actor',i:'🎭'},{e:'Coach',i:'🏅'}],
-    [{e:'Doctor',i:'👨‍⚕️'},{e:'Teacher',i:'👨‍🏫'},{e:'Chef',i:'👨‍🍳'},{e:'Police',i:'👮'},{e:'Pilot',i:'👨‍✈️'},{e:'Firefighter',i:'👨‍🚒'},{e:'Nurse',i:'👩‍⚕️'},{e:'Astronaut',i:'👨‍🚀'},{e:'Baker',i:'🥖'},{e:'Engineer',i:'👨‍🔧'}],
-    [{e:'Farmer',i:'👨‍🌾'},{e:'Artist',i:'👨‍🎨'},{e:'Scientist',i:'👨‍🔬'},{e:'Dentist',i:'🦷'},{e:'Singer',i:'🎤'},{e:'Dancer',i:'💃'},{e:'Musician',i:'🎵'},{e:'Actor',i:'🎭'},{e:'Coach',i:'🏅'},{e:'Mechanic',i:'🔩'}],
-    [{e:'Doctor',i:'👨‍⚕️'},{e:'Teacher',i:'👨‍🏫'},{e:'Chef',i:'👨‍🍳'},{e:'Pilot',i:'👨‍✈️'},{e:'Astronaut',i:'👨‍🚀'},{e:'Engineer',i:'👨‍🔧'},{e:'Farmer',i:'👨‍🌾'},{e:'Nurse',i:'👩‍⚕️'},{e:'Police',i:'👮'},{e:'Firefighter',i:'👨‍🚒'}]
+    [{e:'Doctor',i:'👨‍⚕️'},{e:'Teacher',i:'👨‍🏫'},{e:'Police',i:'👮'},{e:'Firefighter',i:'👨‍🚒'},{e:'Chef',i:'👨‍🍳'},{e:'Pilot',i:'👨‍✈️'},{e:'Farmer',i:'👨‍🌾'},{e:'Nurse',i:'👩‍⚕️'},{e:'Baker',i:'🥖'},{e:'Driver',i:'🚗'}],
+    [{e:'Artist',i:'👨‍🎨'},{e:'Singer',i:'🎤'},{e:'Dancer',i:'💃'},{e:'Astronaut',i:'👨‍🚀'},{e:'Vet',i:'🐾'},{e:'Dentist',i:'🦷'},{e:'Builder',i:'🏗️'},{e:'Painter',i:'🖌️'},{e:'Barber',i:'💈'},{e:'Coach',i:'🏅'}],
+    [{e:'Doctor',i:'👨‍⚕️'},{e:'Teacher',i:'👨‍🏫'},{e:'Police',i:'👮'},{e:'Firefighter',i:'👨‍🚒'},{e:'Chef',i:'👨‍🍳'},{e:'Nurse',i:'👩‍⚕️'},{e:'Baker',i:'🥖'},{e:'Farmer',i:'👨‍🌾'},{e:'Pilot',i:'👨‍✈️'},{e:'Driver',i:'🚗'}],
+    [{e:'Artist',i:'👨‍🎨'},{e:'Singer',i:'🎤'},{e:'Dancer',i:'💃'},{e:'Astronaut',i:'👨‍🚀'},{e:'Vet',i:'🐾'},{e:'Dentist',i:'🦷'},{e:'Builder',i:'🏗️'},{e:'Coach',i:'🏅'},{e:'Barber',i:'💈'},{e:'Painter',i:'🖌️'}],
+    [{e:'Doctor',i:'👨‍⚕️'},{e:'Teacher',i:'👨‍🏫'},{e:'Chef',i:'👨‍🍳'},{e:'Police',i:'👮'},{e:'Firefighter',i:'👨‍🚒'},{e:'Nurse',i:'👩‍⚕️'},{e:'Astronaut',i:'👨‍🚀'},{e:'Farmer',i:'👨‍🌾'},{e:'Baker',i:'🥖'},{e:'Vet',i:'🐾'}],
+    [{e:'Engineer',i:'👨‍🔧'},{e:'Scientist',i:'👨‍🔬'},{e:'Mechanic',i:'🔩'},{e:'Plumber',i:'🔧'},{e:'Electrician',i:'⚡'},{e:'Carpenter',i:'🪵'},{e:'Gardener',i:'🌱'},{e:'Waiter',i:'🍽️'},{e:'Cashier',i:'💰'},{e:'Cleaner',i:'🧹'}],
+    [{e:'Captain',i:'⚓'},{e:'Librarian',i:'📚'},{e:'Musician',i:'🎵'},{e:'Actor',i:'🎭'},{e:'Swimmer',i:'🏊'},{e:'Runner',i:'🏃'},{e:'Boxer',i:'🥊'},{e:'Cyclist',i:'🚴'},{e:'Gymnast',i:'🤸'},{e:'Referee',i:'⚽'}],
+    [{e:'Engineer',i:'👨‍🔧'},{e:'Scientist',i:'👨‍🔬'},{e:'Mechanic',i:'🔩'},{e:'Electrician',i:'⚡'},{e:'Carpenter',i:'🪵'},{e:'Captain',i:'⚓'},{e:'Musician',i:'🎵'},{e:'Actor',i:'🎭'},{e:'Swimmer',i:'🏊'},{e:'Boxer',i:'🥊'}],
+    [{e:'Plumber',i:'🔧'},{e:'Gardener',i:'🌱'},{e:'Waiter',i:'🍽️'},{e:'Cashier',i:'💰'},{e:'Cleaner',i:'🧹'},{e:'Librarian',i:'📚'},{e:'Runner',i:'🏃'},{e:'Cyclist',i:'🚴'},{e:'Gymnast',i:'🤸'},{e:'Referee',i:'⚽'}],
+    [{e:'Engineer',i:'👨‍🔧'},{e:'Scientist',i:'👨‍🔬'},{e:'Captain',i:'⚓'},{e:'Musician',i:'🎵'},{e:'Actor',i:'🎭'},{e:'Mechanic',i:'🔩'},{e:'Carpenter',i:'🪵'},{e:'Swimmer',i:'🏊'},{e:'Boxer',i:'🥊'},{e:'Gymnast',i:'🤸'}],
+    [{e:'Judge',i:'⚖️'},{e:'Lawyer',i:'📋'},{e:'Architect',i:'📐'},{e:'Journalist',i:'📰'},{e:'Photographer',i:'📷'},{e:'Tailor',i:'✂️'},{e:'Florist',i:'💐'},{e:'Skater',i:'⛸️'},{e:'Archer',i:'🏹'},{e:'Climber',i:'🧗'}],
+    [{e:'Surgeon',i:'🔪'},{e:'Psychologist',i:'🧠'},{e:'Accountant',i:'💼'},{e:'Judge',i:'⚖️'},{e:'Lawyer',i:'📋'},{e:'Architect',i:'📐'},{e:'Journalist',i:'📰'},{e:'Photographer',i:'📷'},{e:'Tailor',i:'✂️'},{e:'Florist',i:'💐'}],
+    [{e:'Judge',i:'⚖️'},{e:'Lawyer',i:'📋'},{e:'Architect',i:'📐'},{e:'Journalist',i:'📰'},{e:'Skater',i:'⛸️'},{e:'Archer',i:'🏹'},{e:'Climber',i:'🧗'},{e:'Surgeon',i:'🔪'},{e:'Psychologist',i:'🧠'},{e:'Accountant',i:'💼'}],
+    [{e:'Photographer',i:'📷'},{e:'Tailor',i:'✂️'},{e:'Florist',i:'💐'},{e:'Judge',i:'⚖️'},{e:'Architect',i:'📐'},{e:'Lawyer',i:'📋'},{e:'Journalist',i:'📰'},{e:'Surgeon',i:'🔪'},{e:'Skater',i:'⛸️'},{e:'Archer',i:'🏹'}],
+    [{e:'Judge',i:'⚖️'},{e:'Lawyer',i:'📋'},{e:'Surgeon',i:'🔪'},{e:'Psychologist',i:'🧠'},{e:'Accountant',i:'💼'},{e:'Architect',i:'📐'},{e:'Journalist',i:'📰'},{e:'Photographer',i:'📷'},{e:'Climber',i:'🧗'},{e:'Florist',i:'💐'}]
   ]}
 };
 
@@ -840,9 +895,15 @@ function playRandom(){
 }
 
 // ===== LEVELS =====
+function getDiffBadge(lvl){
+    if(lvl<=5)  return '<span style="background:#2ecc71;color:white;font-size:10px;font-weight:900;padding:2px 8px;border-radius:10px;">⭐ Kolay</span>';
+    if(lvl<=10) return '<span style="background:#f39c12;color:white;font-size:10px;font-weight:900;padding:2px 8px;border-radius:10px;">🔥 Orta</span>';
+    return '<span style="background:#e74c3c;color:white;font-size:10px;font-weight:900;padding:2px 8px;border-radius:10px;">💎 Zor</span>';
+}
+
 function isLevelUnlocked(key, lvl){
-    if(lvl===1) return true; // İlk level her zaman açık
-    return getStars(key, lvl-1) >= 2; // Önceki levelda en az 2 yıldız gerekli
+    if(lvl===1) return true;
+    return getStars(key, lvl-1) >= 2;
 }
 
 function showLevels(key){
@@ -858,11 +919,16 @@ function showLevels(key){
         const s=getStars(key,i);
         const sh='⭐'.repeat(s)+'☆'.repeat(Math.max(0,3-s));
         const unlocked=isLevelUnlocked(key,i);
+        // Bölüm başlıkları
+        if(i===1)  list.innerHTML+=`<div style="font-family:'Fredoka One',cursive;font-size:15px;color:#333;padding:6px 4px 8px;display:flex;align-items:center;gap:8px;">⭐ Kolay Seviye <span style="font-size:11px;font-family:'Nunito',sans-serif;font-weight:700;color:#999;">(1-5. Sınıf)</span></div>`;
+        if(i===6)  list.innerHTML+=`<div style="font-family:'Fredoka One',cursive;font-size:15px;color:#333;padding:14px 4px 8px;display:flex;align-items:center;gap:8px;">🔥 Orta Seviye <span style="font-size:11px;font-family:'Nunito',sans-serif;font-weight:700;color:#999;">(3. Sınıf)</span></div>`;
+        if(i===11) list.innerHTML+=`<div style="font-family:'Fredoka One',cursive;font-size:15px;color:#333;padding:14px 4px 8px;display:flex;align-items:center;gap:8px;">💎 İleri Seviye <span style="font-size:11px;font-family:'Nunito',sans-serif;font-weight:700;color:#999;">(4. Sınıf+)</span></div>`;
+
         list.innerHTML+=`
         <div class="lvl-item ${!unlocked?'lvl-locked':''}" onclick="${unlocked?`startGame(${i})`:`lockedLevelTap(${i})`}">
             <div class="lvl-badge">${unlocked?cat.i:'🔒'}</div>
             <div class="lvl-inf">
-                <div class="lvl-nm">Level ${i}</div>
+                <div class="lvl-nm">Level ${i} ${unlocked?getDiffBadge(i):''}</div>
                 <div class="lvl-st-txt">${unlocked?'10 benzersiz kelime':'Önceki levelde 2⭐ kazan!'}</div>
             </div>
             <div class="lvl-stars">${unlocked?sh:'🔒'}</div>
@@ -877,7 +943,6 @@ function showLevels(key){
                  data-full-width-responsive="true"></ins>
         </div>`:''}`;
     }
-    // Reklamı başlat
     try { (adsbygoogle=window.adsbygoogle||[]).push({}); } catch(e){}
 }
 function lockedLevelTap(lvl){
