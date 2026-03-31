@@ -373,18 +373,8 @@
             display:none;
         }
 
-        /* REKLAM — Sabit alt banner */
-        .ad-bottom-bar{
-            position:fixed; bottom:0; left:0; right:0;
-            background:var(--white);
-            border-top:1px solid #eee;
-            display:flex; align-items:center; justify-content:center;
-            padding:4px 0;
-            z-index:200;
-            min-height:60px;
-        }
-        /* Alt reklam için sayfa içeriğini yukarı it */
-        body{ padding-bottom:60px; }
+        /* body padding-bottom normal */
+        body{ padding-bottom: 0; }
 
         /* Level arası reklam kutusu */
         .ad-between-levels{
@@ -1547,15 +1537,15 @@ init();
          data-ad-slot="9830118161"></ins>
 </div>
 
+<!-- Alt linkler -->
+<div style="text-align:center;padding:12px 0 40px;display:flex;justify-content:center;gap:20px;flex-wrap:wrap;">
+    <a href="about.html" style="color:#1a1a2e;font-family:'Nunito',sans-serif;font-size:13px;font-weight:900;text-decoration:none;opacity:.6;">ℹ️ Hakkında</a>
+    <a href="privacy.html" style="color:#1a1a2e;font-family:'Nunito',sans-serif;font-size:13px;font-weight:900;text-decoration:none;opacity:.6;">🔒 Gizlilik Politikası</a>
+</div>
+
 <script>
-    // AdSense reklamlarını başlat
     (function(){
-        try {
-            // Alt banner
-            (adsbygoogle = window.adsbygoogle || []).push({});
-            // Level arası reklam
-            (adsbygoogle = window.adsbygoogle || []).push({});
-        } catch(e){ console.log('AdSense:', e); }
+        try { (adsbygoogle=window.adsbygoogle||[]).push({}); } catch(e){}
     })();
 </script>
 
