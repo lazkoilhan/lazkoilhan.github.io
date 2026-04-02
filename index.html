@@ -1104,10 +1104,10 @@ function showPackAnimation(cards){
         setTimeout(()=>{ div.style.opacity='1'; }, idx * 200);
     });
 
-    // 4 saniye sonra tüm açılmamışları otomatik aç
+    // 2 saniye sonra tüm açılmamışları otomatik aç
     setTimeout(()=>{
         divs.forEach(({flipCard})=> flipCard());
-    }, 5000);
+    }, 2000);
 
     document.getElementById('packOverlay').classList.add('show');
     renderAlbumDot();
