@@ -68,18 +68,19 @@
             position:relative;overflow:hidden;
         }
         .hero-banner{
-            height:100px;margin:0 -16px 0;
+            height:140px;margin:0 -16px 0;
             background:linear-gradient(135deg,var(--yellow) 0%,#FFE566 100%);
             border-radius:30px 30px 50% 50%;
             display:flex;align-items:flex-end;justify-content:center;
+            padding-bottom:0;
         }
         .hero-avatar-wrap{
-            position:relative;top:26px;display:inline-block;
+            position:relative;top:32px;display:inline-block;
             cursor:pointer;
         }
-        .hero-avatar-base{font-size:85px;filter:drop-shadow(0 10px 15px rgba(0,0,0,.2));animation:float 3s ease-in-out infinite;display:block;line-height:1;}
-        .hero-hat{font-size:48px;position:absolute;top:-28px;left:50%;transform:translateX(-50%);pointer-events:none;}
-        .hero-glasses{font-size:32px;position:absolute;top:22px;left:50%;transform:translateX(-50%);pointer-events:none;}
+        /* hero-avatar-base, hero-hat, hero-glasses, hero-outfit artık canvas ile çiziliyor */
+        .hero-avatar-base,.hero-hat,.hero-glasses,.hero-outfit{display:none;}
+        .avatar-edit-hint{font-size:11px;color:#aaa;font-weight:700;margin-top:44px;margin-bottom:2px;}
         .avatar-edit-hint{font-size:11px;color:#aaa;font-weight:700;margin-top:32px;margin-bottom:2px;}
         @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
         .hero-title{font-family:'Fredoka One',cursive;font-size:30px;color:var(--text);margin-top:6px;}
@@ -193,13 +194,27 @@
         /* AVATAR SCREEN */
         #avatar-screen{padding:0;}
         .av-hero{background:var(--white);margin:14px 15px 16px;border-radius:30px;padding:24px 18px;text-align:center;box-shadow:var(--sh-wht);}
-        .av-preview{
-            font-size:90px;display:block;position:relative;
-            filter:drop-shadow(0 10px 18px rgba(0,0,0,.15));
-            animation:float 3s ease-in-out infinite;
-            margin-bottom:10px;
-        }
+
+        /* Canvas avatar */
+        .av-canvas-wrap{display:inline-block;margin:0 auto 8px;}
+        canvas.av-canvas{display:block;}
+
         .av-section-title{font-family:'Fredoka One',cursive;font-size:16px;color:var(--text);text-align:left;padding:0 15px;margin:14px 0 8px;}
+
+        /* Karakter seç row */
+        .char-row{display:flex;gap:12px;padding:0 15px 4px;overflow-x:auto;scrollbar-width:none;}
+        .char-row::-webkit-scrollbar{display:none;}
+        .char-btn{
+            flex:0 0 auto;
+            background:var(--white);border-radius:20px;padding:12px 10px;
+            text-align:center;cursor:pointer;box-shadow:var(--sh-wht);
+            transition:.15s;min-width:80px;border:3px solid transparent;
+        }
+        .char-btn:active{transform:translateY(3px);}
+        .char-btn.selected{border-color:var(--yellow);background:#FFF9C4;box-shadow:var(--sh-ylw);}
+        .char-btn-ico{font-size:36px;display:block;margin-bottom:4px;}
+        .char-btn-nm{font-size:11px;font-weight:900;color:var(--text);}
+
         .av-items{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:0 15px 12px;}
         .av-item{
             background:var(--white);border-radius:18px;padding:12px 6px;
@@ -456,9 +471,12 @@
     <div class="hero-card">
         <div class="hero-banner">
             <div class="hero-avatar-wrap" onclick="showScreen('avatar-screen');document.getElementById('backBtn').classList.remove('hidden')">
-                <span class="hero-avatar-base" id="heroBase">😎</span>
-                <span class="hero-hat" id="heroHat"></span>
-                <span class="hero-glasses" id="heroGlasses"></span>
+                <canvas id="heroCanvas" width="110" height="130" style="display:block;filter:drop-shadow(0 8px 14px rgba(0,0,0,.2));animation:float 3s ease-in-out infinite;"></canvas>
+                <!-- hidden spans kept for compatibility -->
+                <span id="heroBase" style="display:none">😎</span>
+                <span id="heroHat" style="display:none"></span>
+                <span id="heroGlasses" style="display:none"></span>
+                <span id="heroOutfit" style="display:none"></span>
             </div>
         </div>
         <div class="avatar-edit-hint">✏️ Avatarına dokun!</div>
@@ -471,9 +489,9 @@
                 📋 Görev
                 <span class="quest-dot" id="questDot"></span>
             </button>
-            <button class="btn-quest" style="background:#8e44ad;box-shadow:0 6px 0 #6c3483;" onclick="showScreen('album-screen');document.getElementById('backBtn').classList.remove('hidden')">
+            <button class="btn-quest" style="background:var(--yellow);color:var(--text);box-shadow:var(--sh-ylw);" onclick="showScreen('album-screen');document.getElementById('backBtn').classList.remove('hidden')">
                 📚 Albüm
-                <span class="quest-dot" id="albumDot" style="background:#FFD600;"></span>
+                <span class="quest-dot" id="albumDot" style="background:#F03E3E;"></span>
             </button>
         </div>
     </div>
@@ -516,23 +534,30 @@
 <!-- AVATAR SCREEN -->
 <div class="screen" id="avatar-screen">
     <div class="av-hero">
-        <div style="position:relative;display:inline-block;margin-bottom:6px;">
-            <span class="av-preview" id="avPreviewBase">😎</span>
-            <span style="font-size:52px;position:absolute;top:-22px;left:50%;transform:translateX(-50%)" id="avPreviewHat"></span>
-            <span style="font-size:34px;position:absolute;top:20px;left:50%;transform:translateX(-50%)" id="avPreviewGlasses"></span>
+        <!-- Canvas önizleme -->
+        <div class="av-canvas-wrap">
+            <canvas id="avCanvas" width="140" height="170" class="av-canvas"></canvas>
         </div>
+        <!-- hidden spans for JS compat -->
+        <span id="avPreviewBase" style="display:none">😎</span>
+        <span id="avPreviewHat" style="display:none"></span>
+        <span id="avPreviewGlasses" style="display:none"></span>
+        <span id="avPreviewOutfit" style="display:none"></span>
         <div style="font-family:'Fredoka One',cursive;font-size:22px;color:var(--text);margin-top:8px;">Avatarını Özelleştir!</div>
-        <div style="color:#aaa;font-size:12px;font-weight:700;">Üstüne dokunarak seç · 🪙 ile satın al</div>
+        <div style="color:#aaa;font-size:12px;font-weight:700;">Seç · 🪙 ile satın al</div>
     </div>
 
-    <div class="av-section-title">😊 Yüz Seç</div>
-    <div class="av-items" id="avFaces"></div>
+    <div class="av-section-title">🧒 Karakter Seç</div>
+    <div class="char-row" id="avChars"></div>
 
     <div class="av-section-title">🎩 Şapka</div>
     <div class="av-items" id="avHats"></div>
 
     <div class="av-section-title">🕶️ Gözlük</div>
     <div class="av-items" id="avGlasses"></div>
+
+    <div class="av-section-title">👗 Kıyafet</div>
+    <div class="av-items" id="avOutfits"></div>
 </div>
 
 <!-- ALBUM SCREEN -->
@@ -561,8 +586,8 @@
 </div>
 
 <!-- PACK AÇMA OVERLAY -->
-<div class="pack-overlay" id="packOverlay">
-    <div class="pack-tap-hint" id="packHint">Kartlara dokun!</div>
+<div class="pack-overlay" id="packOverlay" onclick="handlePackOverlayClick(event)">
+    <div class="pack-tap-hint" id="packHint">Kartlara dokun! 👆</div>
     <div class="pack-cards-row" id="packCardsRow"></div>
     <button class="pack-done-btn" id="packDoneBtn" onclick="closePack()">Harika! 🎉</button>
 </div>
@@ -579,10 +604,11 @@
 
 <script>
 // ===== SES =====
-const synth=window.speechSynthesis;
+let synth = null;
+function getSynth(){ if(!synth) synth=window.speechSynthesis; return synth; }
 const actx=new(window.AudioContext||window.webkitAudioContext)();
 function tone(f,t,d){const o=actx.createOscillator(),g=actx.createGain();o.type=t;o.frequency.value=f;o.connect(g);g.connect(actx.destination);o.start();g.gain.exponentialRampToValueAtTime(0.00001,actx.currentTime+d);o.stop(actx.currentTime+d);}
-function speak(tx){if(synth.speaking)synth.cancel();const u=new SpeechSynthesisUtterance(tx);u.lang='en-US';u.pitch=1.2;u.rate=0.85;synth.speak(u);}
+function speak(tx){try{const s=getSynth();if(!s)return;if(s.speaking)s.cancel();const u=new SpeechSynthesisUtterance(tx);u.lang='en-US';u.pitch=1.2;u.rate=0.85;s.speak(u);}catch(e){}}
 function ok(){tone(700,'sine',.25);}
 function err(){tone(160,'sawtooth',.35);}
 
@@ -596,8 +622,8 @@ const DB={
 let gold    = DB.get('gold', 200);   // başlangıç altını (yeni oyuncuya 200 ver)
 let lives   = DB.get('lives', 3);
 let unlockedCats = DB.get('unlocked', ['fruits','animals','colors']); // ilk 3 ücretsiz
-let avatar  = DB.get('avatar', {face:'😎', hat:'', glasses:''});
-let ownedItems = DB.get('owned', ['😎','😊','🥰','face_none','hat_none','glasses_none']);
+let avatar  = DB.get('avatar', {face:'😎', hat:'', glasses:'', outfit:''});
+let ownedItems = DB.get('owned', ['char_cool','char_happy','char_girl','char_boy','char_love','hat_none','glasses_none','outfit_none']);
 let starDB  = DB.get('stars', {});
 let questDB = DB.get('quests', null);
 
@@ -610,24 +636,161 @@ function saveAll(){
 function getStars(c,l){return starDB[c+'_'+l]||0;}
 function saveStars(c,l,s){const k=c+'_'+l;if(!starDB[k]||starDB[k]<s){starDB[k]=s;saveAll();}}
 
-// ===== AVATAR ITEMS =====
-const avFaceItems=[
-    {id:'😎',ico:'😎',price:0},{id:'😊',ico:'😊',price:0},
-    {id:'🥰',ico:'🥰',price:0},{id:'😜',ico:'😜',price:50},
-    {id:'🤩',ico:'🤩',price:50},{id:'😏',ico:'😏',price:80},
-    {id:'🤠',ico:'🤠',price:100},{id:'👽',ico:'👽',price:150},
+// ===== AVATAR SİSTEMİ =====
+// Karakterler
+const avCharItems=[
+    {id:'char_cool',  ico:'😎', nm:'Havalı',   price:0},
+    {id:'char_happy', ico:'😊', nm:'Mutlu',    price:0},
+    {id:'char_girl',  ico:'👧', nm:'Kız',      price:0},
+    {id:'char_boy',   ico:'👦', nm:'Erkek',    price:0},
+    {id:'char_love',  ico:'🥰', nm:'Sevimli',  price:0},
+    {id:'char_silly', ico:'😜', nm:'Şakacı',   price:50},
+    {id:'char_star',  ico:'🤩', nm:'Yıldız',   price:50},
+    {id:'char_alien', ico:'👽', nm:'Uzaylı',   price:150},
 ];
+// Şapkalar
 const avHatItems=[
-    {id:'hat_none',ico:'🚫',price:0,val:''},{id:'hat_top',ico:'🎩',price:60,val:'🎩'},
-    {id:'hat_crown',ico:'👑',price:80,val:'👑'},{id:'hat_santa',ico:'🎅',price:70,val:'🎅'},
-    {id:'hat_cowboy',ico:'🤠',price:90,val:'🤠'},{id:'hat_witch',ico:'🧙',price:120,val:'🧙'},
-    {id:'hat_grad',ico:'🎓',price:100,val:'🎓'},{id:'hat_party',ico:'🥳',price:50,val:'🥳'},
+    {id:'hat_none',   ico:'🚫', price:0,  val:'', nm:'Yok'},
+    {id:'hat_top',    ico:'🎩', price:60, val:'🎩',nm:'Silindir'},
+    {id:'hat_crown',  ico:'👑', price:80, val:'👑',nm:'Taç'},
+    {id:'hat_santa',  ico:'🎅', price:70, val:'🎅',nm:'Noel'},
+    {id:'hat_cowboy', ico:'🤠', price:90, val:'🤠',nm:'Kovboy'},
+    {id:'hat_witch',  ico:'🧙', price:120,val:'🧙',nm:'Cadı'},
+    {id:'hat_grad',   ico:'🎓', price:100,val:'🎓',nm:'Mezun'},
+    {id:'hat_party',  ico:'🥳', price:50, val:'🥳',nm:'Parti'},
+    {id:'hat_bow',    ico:'🎀', price:40, val:'🎀',nm:'Fiyonk'},
+    {id:'hat_flower', ico:'🌸', price:40, val:'🌸',nm:'Çiçek'},
 ];
+// Gözlükler
 const avGlassItems=[
-    {id:'glasses_none',ico:'🚫',price:0,val:''},{id:'gl_sun',ico:'🕶️',price:60,val:'🕶️'},
-    {id:'gl_star',ico:'⭐',price:80,val:'⭐'},{id:'gl_heart',ico:'🩷',price:70,val:'🩷'},
-    {id:'gl_cool',ico:'😎',price:50,val:'🤓'},{id:'gl_round',ico:'🔵',price:90,val:'🔵'},
+    {id:'glasses_none',ico:'🚫', price:0, val:'', nm:'Yok'},
+    {id:'gl_sun',      ico:'🕶️',price:60,val:'🕶️',nm:'Güneş'},
+    {id:'gl_star',     ico:'⭐', price:80,val:'⭐', nm:'Yıldız'},
+    {id:'gl_heart',    ico:'🩷', price:70,val:'🩷', nm:'Kalp'},
+    {id:'gl_nerd',     ico:'🤓', price:50,val:'🤓', nm:'Zeki'},
+    {id:'gl_round',    ico:'🔵', price:90,val:'🔵', nm:'Yuvarlak'},
 ];
+// Kıyafetler
+const avOutfitItems=[
+    {id:'outfit_none',  ico:'🚫', price:0,  val:'', nm:'Yok'},
+    {id:'outfit_tshirt',ico:'👕', price:40, val:'👕',nm:'Tişört'},
+    {id:'outfit_dress', ico:'👗', price:60, val:'👗',nm:'Elbise'},
+    {id:'outfit_jacket',ico:'🧥', price:80, val:'🧥',nm:'Ceket'},
+    {id:'outfit_cape',  ico:'🦸', price:100,val:'🦸',nm:'Pelerin'},
+    {id:'outfit_sport', ico:'🏃', price:70, val:'🏃',nm:'Spor'},
+    {id:'outfit_prince',ico:'🤴', price:120,val:'🤴',nm:'Prens'},
+    {id:'outfit_fairy', ico:'🧚', price:120,val:'🧚',nm:'Peri'},
+];
+
+// ===== CANVAS AVATAR =====
+function drawAvatar(canvasId, size, face, hat, glasses, outfit){
+    const canvas = document.getElementById(canvasId);
+    if(!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const w = canvas.width, h = canvas.height;
+    ctx.clearRect(0,0,w,h);
+
+    // Ölçek faktörleri
+    const bodySize   = Math.round(size * 0.72);
+    const hatSize    = Math.round(size * 0.48);
+    const glassSize  = Math.round(size * 0.30);
+    const outfitSize = Math.round(size * 0.38);
+
+    // Y pozisyonları — karakter ortada, üstüne şapka, altına kıyafet
+    const bodyY    = Math.round(h * 0.62);  // karakter merkezi
+    const hatY     = Math.round(h * 0.22);  // şapka üstte
+    const glassY   = Math.round(h * 0.52);  // gözlük yüzde
+    const outfitY  = Math.round(h * 0.88);  // kıyafet altta
+    const cx       = Math.round(w / 2);
+
+    // Kıyafet (en altta)
+    if(outfit){
+        ctx.font = `${outfitSize}px serif`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(outfit, cx, outfitY);
+    }
+    // Ana karakter
+    ctx.font = `${bodySize}px serif`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(face || '😎', cx, bodyY);
+    // Gözlük (karakterin üstüne)
+    if(glasses){
+        ctx.font = `${glassSize}px serif`;
+        ctx.fillText(glasses, cx, glassY);
+    }
+    // Şapka (en üstte)
+    if(hat){
+        ctx.font = `${hatSize}px serif`;
+        ctx.fillText(hat, cx, hatY);
+    }
+}
+
+function renderAvatar(){
+    const face    = avatar.face    || '😎';
+    const hat     = avatar.hat     || '';
+    const glasses = avatar.glasses || '';
+    const outfit  = avatar.outfit  || '';
+
+    // Ana sayfa hero canvas
+    drawAvatar('heroCanvas', 110, face, hat, glasses, outfit);
+    // Avatar ekranı önizleme canvas
+    drawAvatar('avCanvas', 140, face, hat, glasses, outfit);
+}
+
+function renderAvatarShop(){
+    // Karakterler
+    const charCont = document.getElementById('avChars');
+    if(charCont){
+        charCont.innerHTML = '';
+        avCharItems.forEach(item => {
+            const owned = ownedItems.includes(item.id) || item.price===0;
+            const sel   = avatar.face === item.ico;
+            charCont.innerHTML += `
+            <div class="char-btn ${sel?'selected':''}" onclick="selectAvItem('face','${item.id}','${item.ico}',${item.price},'${item.ico}')">
+                <span class="char-btn-ico">${item.ico}</span>
+                <div class="char-btn-nm">${item.nm}</div>
+                ${!owned?`<div style="font-size:10px;color:#F03E3E;font-weight:900;">🪙${item.price}</div>`:''}
+            </div>`;
+        });
+    }
+    // Şapkalar, Gözlükler, Kıyafetler
+    renderSection(avHatItems,    'avHats',    'hat');
+    renderSection(avGlassItems,  'avGlasses', 'glasses');
+    renderSection(avOutfitItems, 'avOutfits', 'outfit');
+}
+
+function renderSection(items, containerId, type){
+    const cont = document.getElementById(containerId);
+    if(!cont) return;
+    cont.innerHTML = '';
+    items.forEach(item => {
+        const owned = ownedItems.includes(item.id) || item.price===0;
+        const curVal = avatar[type] || '';
+        const isSelected = curVal === (item.val !== undefined ? item.val : item.ico);
+        cont.innerHTML += `
+        <div class="av-item ${isSelected?'selected':''} ${!owned&&item.price>0?'locked-item':''}"
+             onclick="selectAvItem('${type}','${item.id}','${(item.val!==undefined?item.val:item.ico).replace(/'/g,"\\'")}',${item.price},'${item.ico}')">
+            <span class="av-item-ico">${item.ico}</span>
+            <div class="av-item-price ${owned?'owned':''}">${owned?'✓':'🪙'+item.price}</div>
+            ${!owned&&item.price>0?'<span class="av-lock">🔒</span>':''}
+        </div>`;
+    });
+}
+
+function selectAvItem(type, id, val, price, ico){
+    if(!ownedItems.includes(id) && price>0){
+        if(gold < price){ alert(`Yeterli altın yok! Gerekli: ${price}🪙`); return; }
+        gold -= price; ownedItems.push(id); saveAll(); addGold(0);
+        speak("Item purchased!"); confetti({particleCount:50,spread:50,origin:{y:.5}});
+    }
+    if(type==='face')    avatar.face    = ico;
+    else if(type==='hat')     avatar.hat     = val;
+    else if(type==='glasses') avatar.glasses = val;
+    else if(type==='outfit')  avatar.outfit  = val;
+    saveAll(); renderAvatar(); renderAvatarShop();
+}
 
 // ===== KATEGORİ KİLİT FİYATLARI =====
 const CAT_PRICES={
@@ -905,8 +1068,10 @@ function showPackAnimation(cards){
     const doneBtn = document.getElementById('packDoneBtn');
     row.innerHTML = '';
     hint.style.display = 'block';
+    hint.innerText = 'Kartlara dokun! 👆';
     doneBtn.style.display = 'none';
 
+    const divs = [];
     cards.forEach((card, idx) => {
         const div = document.createElement('div');
         div.className = 'pack-card-reveal' + (card.dup ? ' dup' : '');
@@ -915,7 +1080,10 @@ function showPackAnimation(cards){
             <div class="pack-card-label">${card.e}</div>
             ${card.dup ? '<div class="pack-dup-badge">Çift!</div>' : ''}
         `;
-        div.onclick = () => {
+        div.style.opacity = '0';
+        div.style.transition = 'opacity .3s';
+
+        const flipCard = () => {
             if(!div.classList.contains('flipped')){
                 div.classList.add('flipped');
                 ok();
@@ -927,11 +1095,19 @@ function showPackAnimation(cards){
                 }
             }
         };
-        // Stagger flip timing for auto-reveal feel
-        setTimeout(()=> div.style.opacity = '1', idx * 150);
-        div.style.opacity = '0';
+
+        div.onclick = flipCard;
+        divs.push({div, flipCard});
         row.appendChild(div);
+
+        // Kartı görünür yap
+        setTimeout(()=>{ div.style.opacity='1'; }, idx * 200);
     });
+
+    // 4 saniye sonra tüm açılmamışları otomatik aç
+    setTimeout(()=>{
+        divs.forEach(({flipCard})=> flipCard());
+    }, 5000);
 
     document.getElementById('packOverlay').classList.add('show');
     renderAlbumDot();
@@ -940,6 +1116,12 @@ function showPackAnimation(cards){
 function closePack(){
     document.getElementById('packOverlay').classList.remove('show');
     renderAlbum();
+}
+function handlePackOverlayClick(e){
+    // Sadece arka plana tıklanırsa kapat (done butonu görünüyorsa)
+    if(e.target.id === 'packOverlay' && document.getElementById('packDoneBtn').style.display === 'block'){
+        closePack();
+    }
 }
 
 // ===== ALBÜM RENDER =====
@@ -1109,50 +1291,6 @@ function confirmUnlock(){
 }
 
 // ===== AVATAR =====
-function renderAvatar(){
-    document.getElementById('heroBase').innerText=avatar.face||'😎';
-    document.getElementById('heroHat').innerText=avatar.hat||'';
-    document.getElementById('heroGlasses').innerText=avatar.glasses||'';
-    document.getElementById('avPreviewBase').innerText=avatar.face||'😎';
-    document.getElementById('avPreviewHat').innerText=avatar.hat||'';
-    document.getElementById('avPreviewGlasses').innerText=avatar.glasses||'';
-}
-function renderAvatarShop(){
-    function renderSection(items, containerId, type){
-        const cont=document.getElementById(containerId);
-        cont.innerHTML='';
-        items.forEach(item=>{
-            const owned=ownedItems.includes(item.id);
-            const isSelected=
-                type==='face'?avatar.face===item.ico:
-                type==='hat'?avatar.hat===(item.val??''):
-                avatar.glasses===(item.val??'');
-            cont.innerHTML+=`
-            <div class="av-item ${isSelected?'selected':''} ${!owned&&item.price>0?'locked-item':''}"
-                 onclick="selectAvItem('${type}','${item.id}','${(item.val!==undefined?item.val:item.ico).replace(/'/g,'')}',${''+item.price},'${item.ico}')">
-                <span class="av-item-ico">${item.ico}</span>
-                <div class="av-item-price ${owned?'owned':''}">${owned?'✓':'🪙'+item.price}</div>
-                ${!owned&&item.price>0?'<span class="av-lock">🔒</span>':''}
-            </div>`;
-        });
-    }
-    renderSection(avFaceItems,'avFaces','face');
-    renderSection(avHatItems,'avHats','hat');
-    renderSection(avGlassItems,'avGlasses','glasses');
-}
-function selectAvItem(type,id,val,price,ico){
-    if(!ownedItems.includes(id)&&price>0){
-        if(gold<price){
-            alert(`Yeterli altın yok! Gerekli: ${price}🪙`); return;
-        }
-        gold-=price; ownedItems.push(id); saveAll(); addGold(0);
-        speak("Item purchased!"); confetti({particleCount:50,spread:50,origin:{y:.5}});
-    }
-    if(type==='face') avatar.face=ico;
-    else if(type==='hat') avatar.hat=val;
-    else avatar.glasses=val;
-    saveAll(); renderAvatar(); renderAvatarShop();
-}
 
 // ===== ALTIN =====
 function addGold(amt,animate=false){
