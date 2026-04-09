@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edebiyat Hazırlık — YKS EA</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1208;
+    --parchment: #f5f0e8;
+    --cream: #faf7f2;
+    --gold: #c9892a;
+    --gold-light: #e8b96a;
+    --rust: #8b3a1e;
+    --sage: #4a6741;
+    --muted: #7a6e5f;
+    --border: #d4c8b0;
+    --card: #ffffff;
+    --shadow: rgba(26,18,8,0.12);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'IBM Plex Sans', sans-serif;
+    background: var(--parchment);
+    color: var(--ink);
+    min-height: 100vh;
+    background-image: 
+      radial-gradient(ellipse at 20% 0%, rgba(201,137,42,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 100%, rgba(139,58,30,0.06) 0%, transparent 60%);
+  }
+
+  /* HEADER */
+  header {
+    background: var(--ink);
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 40px,
+      rgba(201,137,42,0.04) 40px,
+      rgba(201,137,42,0.04) 41px
+    );
+  }
+
+  .header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 32px 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+  }
+
+  .header-icon {
+    font-size: 48px;
+    line-height: 1;
+  }
+
+  .header-text h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(24px, 4vw, 36px);
+    font-weight: 900;
+    color: var(--parchment);
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+  }
+
+  .header-text h1 span {
+    color: var(--gold-light);
+  }
+
+  .header-text p {
+    font-size: 13px;
+    color: rgba(245,240,232,0.55);
+    margin-top: 4px;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .badge {
+    margin-left: auto;
+    background: var(--gold);
+    color: var(--ink);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+
+  /* MAIN LAYOUT */
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 32px 24px;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 28px;
+    align-items: start;
+  }
+
+  /* SIDEBAR */
+  .sidebar {
+    position: sticky;
+    top: 24px;
+  }
+
+  .sidebar-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px var(--shadow);
+  }
+
+  .sidebar-title {
+    background: var(--ink);
+    color: var(--parchment);
+    padding: 14px 18px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  .topic-list {
+    list-style: none;
+  }
+
+  .topic-item {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .topic-item:last-child { border-bottom: none; }
+
+  .topic-btn {
+    width: 100%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 13px 18px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 13.5px;
+    color: var(--ink);
+    transition: all 0.18s;
+    position: relative;
+  }
+
+  .topic-btn:hover {
+    background: var(--parchment);
+  }
+
+  .topic-btn.active {
+    background: var(--ink);
+    color: var(--parchment);
+  }
+
+  .topic-btn.active .topic-emoji { filter: none; }
+
+  .topic-emoji { font-size: 16px; flex-shrink: 0; }
+
+  .topic-name { font-weight: 500; flex: 1; line-height: 1.3; }
+
+  .topic-count {
+    font-size: 10px;
+    background: rgba(201,137,42,0.2);
+    color: var(--gold);
+    padding: 2px 7px;
+    border-radius: 10px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 500;
+  }
+
+  .topic-btn.active .topic-count {
+    background: rgba(255,255,255,0.15);
+    color: var(--gold-light);
+  }
+
+  /* MODE SELECTOR */
+  .mode-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px var(--shadow);
+    margin-top: 16px;
+  }
+
+  .mode-title {
+    background: var(--rust);
+    color: white;
+    padding: 14px 18px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  .mode-btns {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .mode-btn {
+    width: 100%;
+    border: 1.5px solid var(--border);
+    background: none;
+    border-radius: 8px;
+    padding: 10px 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 13px;
+    color: var(--ink);
+    transition: all 0.18s;
+    text-align: left;
+  }
+
+  .mode-btn:hover { border-color: var(--gold); background: rgba(201,137,42,0.04); }
+
+  .mode-btn.active {
+    border-color: var(--gold);
+    background: rgba(201,137,42,0.08);
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .mode-btn span:first-child { font-size: 18px; }
+
+  /* MAIN CONTENT */
+  .main { min-height: 400px; }
+
+  /* WELCOME */
+  .welcome {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 48px 40px;
+    text-align: center;
+    box-shadow: 0 2px 20px var(--shadow);
+  }
+
+  .welcome-big {
+    font-family: 'Playfair Display', serif;
+    font-size: 64px;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .welcome h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--ink);
+  }
+
+  .welcome p {
+    color: var(--muted);
+    font-size: 15px;
+    max-width: 480px;
+    margin: 0 auto 28px;
+    line-height: 1.7;
+  }
+
+  .welcome-steps {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 28px;
+  }
+
+  .step {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--parchment);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 18px;
+    font-size: 13px;
+    color: var(--ink);
+  }
+
+  .step-num {
+    width: 24px;
+    height: 24px;
+    background: var(--gold);
+    color: var(--ink);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+
+  /* QUESTION AREA */
+  .q-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+
+  .q-topic-badge {
+    background: var(--ink);
+    color: var(--gold-light);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 6px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  .q-mode-badge {
+    background: var(--rust);
+    color: white;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 6px;
+    letter-spacing: 0.5px;
+  }
+
+  .q-count-badge {
+    margin-left: auto;
+    font-size: 12px;
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  /* LOADING */
+  .loading-box {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 60px 40px;
+    text-align: center;
+    box-shadow: 0 2px 20px var(--shadow);
+  }
+
+  .spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--border);
+    border-top-color: var(--gold);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin: 0 auto 20px;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .loading-box p {
+    color: var(--muted);
+    font-size: 14px;
+    font-style: italic;
+  }
+
+  /* QUESTION CARD */
+  .q-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 2px 20px var(--shadow);
+    animation: fadeUp 0.3s ease;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .q-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 19px;
+    line-height: 1.65;
+    color: var(--ink);
+    margin-bottom: 28px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* MULTIPLE CHOICE */
+  .options { display: flex; flex-direction: column; gap: 10px; }
+
+  .option-btn {
+    width: 100%;
+    background: var(--parchment);
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 14.5px;
+    color: var(--ink);
+    text-align: left;
+    line-height: 1.5;
+    transition: all 0.18s;
+  }
+
+  .option-btn:hover:not(:disabled) {
+    border-color: var(--gold);
+    background: rgba(201,137,42,0.05);
+  }
+
+  .option-btn.correct {
+    border-color: var(--sage);
+    background: rgba(74,103,65,0.08);
+    color: var(--sage);
+  }
+
+  .option-btn.wrong {
+    border-color: var(--rust);
+    background: rgba(139,58,30,0.07);
+    color: var(--rust);
+  }
+
+  .option-btn:disabled { cursor: default; }
+
+  .opt-letter {
+    width: 26px;
+    height: 26px;
+    border-radius: 6px;
+    background: var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 12px;
+    flex-shrink: 0;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  .option-btn.correct .opt-letter { background: var(--sage); color: white; }
+  .option-btn.wrong .opt-letter { background: var(--rust); color: white; }
+
+  /* OPEN ENDED */
+  .open-answer {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  textarea {
+    width: 100%;
+    min-height: 120px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 14px;
+    color: var(--ink);
+    background: var(--parchment);
+    resize: vertical;
+    transition: border-color 0.18s;
+    outline: none;
+  }
+
+  textarea:focus { border-color: var(--gold); }
+
+  .submit-btn {
+    align-self: flex-start;
+    background: var(--ink);
+    color: var(--parchment);
+    border: none;
+    border-radius: 10px;
+    padding: 12px 24px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.18s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .submit-btn:hover { background: var(--gold); color: var(--ink); }
+  .submit-btn:disabled { opacity: 0.5; cursor: default; }
+
+  /* ANSWER FEEDBACK */
+  .feedback {
+    margin-top: 20px;
+    border-radius: 10px;
+    padding: 18px 20px;
+    animation: fadeUp 0.25s ease;
+  }
+
+  .feedback.correct-fb { background: rgba(74,103,65,0.08); border: 1px solid rgba(74,103,65,0.3); }
+  .feedback.wrong-fb { background: rgba(139,58,30,0.07); border: 1px solid rgba(139,58,30,0.25); }
+  .feedback.eval-fb { background: rgba(201,137,42,0.07); border: 1px solid rgba(201,137,42,0.3); }
+
+  .feedback-title {
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  .feedback.correct-fb .feedback-title { color: var(--sage); }
+  .feedback.wrong-fb .feedback-title { color: var(--rust); }
+  .feedback.eval-fb .feedback-title { color: var(--gold); }
+
+  .feedback-text {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--ink);
+  }
+
+  /* NEXT BUTTON */
+  .next-area {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: flex-end;
+  }
+
+  .next-btn {
+    background: var(--gold);
+    color: var(--ink);
+    border: none;
+    border-radius: 10px;
+    padding: 12px 24px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.18s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .next-btn:hover { background: var(--ink); color: var(--parchment); }
+
+  /* SCORE */
+  .score-bar-wrap {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 1px 8px var(--shadow);
+  }
+
+  .score-label {
+    font-size: 12px;
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+    white-space: nowrap;
+  }
+
+  .score-bar {
+    flex: 1;
+    height: 6px;
+    background: var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .score-fill {
+    height: 100%;
+    background: var(--gold);
+    border-radius: 4px;
+    transition: width 0.5s ease;
+  }
+
+  .score-pct {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ink);
+    font-family: 'IBM Plex Mono', monospace;
+    white-space: nowrap;
+  }
+
+  /* ERROR */
+  .error-box {
+    background: rgba(139,58,30,0.07);
+    border: 1px solid rgba(139,58,30,0.25);
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+    color: var(--rust);
+    font-size: 14px;
+  }
+
+  .error-box button {
+    margin-top: 12px;
+    background: var(--rust);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 20px;
+    cursor: pointer;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 13px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .container { grid-template-columns: 1fr; }
+    .sidebar { position: static; }
+    .welcome { padding: 32px 20px; }
+    .q-card { padding: 22px 18px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="header-icon">📚</div>
+    <div class="header-text">
+      <h1>Türk <span>Edebiyatı</span> Hazırlık</h1>
+      <p>YKS Eşit Ağırlık · MEB Müfredatı · Son 7 Yıl</p>
+    </div>
+    <div class="badge">🎓 YKS EA</div>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-card">
+      <div class="sidebar-title">📖 Konu Başlıkları</div>
+      <ul class="topic-list" id="topicList">
+        <li class="topic-item">
+          <button class="topic-btn" data-topic="Tanzimat Edebiyatı" onclick="selectTopic(this)">
+            <span class="topic-emoji">🌙</span>
+            <span class="topic-name">Tanzimat Edebiyatı</span>
+            <span class="topic-count">500+</span>
+          </button>
+        </li>
+        <li class="topic-item">
+          <button class="topic-btn" data-topic="Servet-i Fünun Edebiyatı" onclick="selectTopic(this)">
+            <span class="topic-emoji">🌹</span>
+            <span class="topic-name">Servet-i Fünun</span>
+            <span class="topic-count">500+</span>
+          </button>
+        </li>
+        <li class="topic-item">
+          <button class="topic-btn" data-topic="Fecr-i Âti Edebiyatı" onclick="selectTopic(this)">
+            <span class="topic-emoji">🌅</span>
+            <span class="topic-name">Fecr-i Âti</span>
+            <span class="topic-count">500+</span>
+          </button>
+        </li>
+        <li class="topic-item">
+          <button class="topic-btn" data-topic="Millî Edebiyat Dönemi" onclick="selectTopic(this)">
+            <span class="topic-emoji">🦅</span>
+            <span class="topic-name">Millî Edebiyat</span>
+            <span class="topic-count">500+</span>
+          </button>
+        </li>
+        <li class="topic-item">
+          <button class="topic-btn" data-topic="Cumhuriyet Dönemi Edebiyatı" onclick="selectTopic(this)">
+            <span class="topic-emoji">⭐</span>
+            <span class="topic-name">Cumhuriyet Dönemi</span>
+            <span class="topic-count">500+</span>
+          </button>
+        </li>
+        <li class="topic-item">
+          <button class="topic-btn" data-topic="Divan Edebiyatı" onclick="selectTopic(this)">
+            <span class="topic-emoji">📜</span>
+            <span class="topic-name">Divan Edebiyatı</span>
+            <span class="topic-count">500+</span>
+          </button>
+        </li>
+        <li class="topic-item">
+          <button class="topic-btn" data-topic="Halk Edebiyatı" onclick="selectTopic(this)">
+            <span class="topic-emoji">🎶</span>
+            <span class="topic-name">Halk Edebiyatı</span>
+            <span class="topic-count">500+</span>
+          </button>
+        </li>
+        <li class="topic-item">
+          <button class="topic-btn" data-topic="Eski Türk Edebiyatı (Destan-Efsane)" onclick="selectTopic(this)">
+            <span class="topic-emoji">🏹</span>
+            <span class="topic-name">Destan & Efsane</span>
+            <span class="topic-count">500+</span>
+          </button>
+        </li>
+        <li class="topic-item">
+          <button class="topic-btn" data-topic="Türk Edebiyatında Şiir Türleri ve Nazım Biçimleri" onclick="selectTopic(this)">
+            <span class="topic-emoji">🖊️</span>
+            <span class="topic-name">Şiir & Nazım Biçimleri</span>
+            <span class="topic-count">500+</span>
+          </button>
+        </li>
+        <li class="topic-item">
+          <button class="topic-btn" data-topic="Roman, Hikâye ve Tiyatro Türleri" onclick="selectTopic(this)">
+            <span class="topic-emoji">📕</span>
+            <span class="topic-name">Roman, Hikâye & Tiyatro</span>
+            <span class="topic-count">500+</span>
+          </button>
+        </li>
+        <li class="topic-item">
+          <button class="topic-btn" data-topic="Söz Sanatları ve Edebi Sanatlar" onclick="selectTopic(this)">
+            <span class="topic-emoji">🎨</span>
+            <span class="topic-name">Söz Sanatları</span>
+            <span class="topic-count">500+</span>
+          </button>
+        </li>
+        <li class="topic-item">
+          <button class="topic-btn" data-topic="Yeni Türk Edebiyatı Genel Tekrar" onclick="selectTopic(this)">
+            <span class="topic-emoji">🔁</span>
+            <span class="topic-name">Genel Tekrar</span>
+            <span class="topic-count">500+</span>
+          </button>
+        </li>
+      </ul>
+    </div>
+
+    <div class="mode-card">
+      <div class="mode-title">⚡ Soru Modu</div>
+      <div class="mode-btns">
+        <button class="mode-btn active" id="modeMC" onclick="selectMode('mc')">
+          <span>🔵</span>
+          <div>
+            <div style="font-weight:600">Çoktan Seçmeli</div>
+            <div style="font-size:11px;color:var(--muted);font-weight:400">A-B-C-D-E formatı</div>
+          </div>
+        </button>
+        <button class="mode-btn" id="modeOE" onclick="selectMode('oe')">
+          <span>✏️</span>
+          <div>
+            <div style="font-weight:600">Açık Uçlu</div>
+            <div style="font-size:11px;color:var(--muted);font-weight:400">Yazılı cevap + AI değerlendirme</div>
+          </div>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main" id="mainArea">
+    <div class="welcome">
+      <div class="welcome-big">📖</div>
+      <h2>Türk Edebiyatı Soru Bankası</h2>
+      <p>MEB müfredatına uygun, son 7 yılda çıkan sınav konularını kapsayan yapay zeka destekli soru sistemi. Her sorduğunuzda yeni sorular üretilir.</p>
+      <div class="welcome-steps">
+        <div class="step"><div class="step-num">1</div> Soldan konu seç</div>
+        <div class="step"><div class="step-num">2</div> Soru modunu belirle</div>
+        <div class="step"><div class="step-num">3</div> Soruyu çöz & öğren</div>
+      </div>
+    </div>
+  </main>
+
+</div>
+
+<script>
+  let selectedTopic = null;
+  let selectedMode = 'mc';
+  let questionCount = 0;
+  let correctCount = 0;
+  let answered = false;
+
+  function selectTopic(btn) {
+    document.querySelectorAll('.topic-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    selectedTopic = btn.dataset.topic;
+    questionCount = 0;
+    correctCount = 0;
+    loadQuestion();
+  }
+
+  function selectMode(mode) {
+    selectedMode = mode;
+    document.getElementById('modeMC').classList.toggle('active', mode === 'mc');
+    document.getElementById('modeOE').classList.toggle('active', mode === 'oe');
+    if (selectedTopic) loadQuestion();
+  }
+
+  function showLoading() {
+    document.getElementById('mainArea').innerHTML = `
+      <div class="loading-box">
+        <div class="spinner"></div>
+        <p>Soru hazırlanıyor… Yapay zeka ${selectedTopic} konusundan bir soru oluşturuyor.</p>
+      </div>`;
+  }
+
+  function showError(msg) {
+    document.getElementById('mainArea').innerHTML = `
+      <div class="error-box">
+        <div style="font-size:32px;margin-bottom:12px">⚠️</div>
+        <p>${msg}</p>
+        <button onclick="loadQuestion()">Tekrar Dene</button>
+      </div>`;
+  }
+
+  async function loadQuestion() {
+    if (!selectedTopic) return;
+    answered = false;
+    showLoading();
+
+    const modeLabel = selectedMode === 'mc' ? 'çoktan seçmeli (5 şık: A,B,C,D,E)' : 'açık uçlu';
+    const modeJSON = selectedMode === 'mc'
+      ? `"soru": "...", "secenekler": {"A":"...","B":"...","C":"...","D":"...","E":"..."}, "dogru_cevap": "A", "aciklama": "..."`
+      : `"soru": "...", "model_cevap": "...", "aciklama": "..."`;
+
+    const prompt = `Sen bir Türk edebiyatı YKS sınav uzmanısın. MEB müfredatına uygun, üniversite sınavına hazırlanan Eşit Ağırlık öğrencileri için ${selectedTopic} konusundan ${modeLabel} format soru üret.
+
+Konu: ${selectedTopic}
+Son 7 yılda (2018-2025) YKS/LYS sınavlarında çıkan veya çıkabilecek düzeyde bir soru olsun.
+Soru net, bilgi ölçücü ve MEB müfredatına uygun olmalı.
+
+SADECE şu JSON formatında yanıt ver (başka hiçbir şey yazma):
+{${modeJSON}}`;
+
+    try {
+      const res = await fetch("https://api.anthropic.com/v1/messages", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          model: "claude-sonnet-4-20250514",
+          max_tokens: 1000,
+          messages: [{ role: "user", content: prompt }]
+        })
+      });
+
+      const data = await res.json();
+      const text = data.content?.[0]?.text || '';
+      const clean = text.replace(/```json|```/g, '').trim();
+      const q = JSON.parse(clean);
+
+      questionCount++;
+      renderQuestion(q);
+    } catch (e) {
+      showError('Soru yüklenirken bir hata oluştu. Lütfen tekrar deneyin.');
+    }
+  }
+
+  function renderQuestion(q) {
+    const pct = questionCount > 1 ? Math.round((correctCount / (questionCount - 1)) * 100) : 0;
+    const scoreHTML = questionCount > 1 ? `
+      <div class="score-bar-wrap">
+        <span class="score-label">📊 DOĞRULUK</span>
+        <div class="score-bar"><div class="score-fill" style="width:${pct}%"></div></div>
+        <span class="score-pct">${correctCount}/${questionCount - 1} — %${pct}</span>
+      </div>` : '';
+
+    const modeLabel = selectedMode === 'mc' ? '🔵 Çoktan Seçmeli' : '✏️ Açık Uçlu';
+
+    let bodyHTML = '';
+
+    if (selectedMode === 'mc' && q.secenekler) {
+      const letters = ['A','B','C','D','E'];
+      const opts = letters.filter(l => q.secenekler[l]).map(l => `
+        <button class="option-btn" id="opt${l}" onclick="checkMC(this,'${l}','${q.dogru_cevap}')" data-letter="${l}">
+          <span class="opt-letter">${l}</span>
+          <span>${q.secenekler[l]}</span>
+        </button>`).join('');
+      bodyHTML = `<div class="options">${opts}</div><div id="feedback"></div>`;
+    } else {
+      bodyHTML = `
+        <div class="open-answer">
+          <textarea id="userAnswer" placeholder="Cevabınızı buraya yazın…"></textarea>
+          <button class="submit-btn" onclick="checkOE('${escapeJS(q.model_cevap)}','${escapeJS(q.aciklama)}')">
+            ✓ Cevabımı Değerlendir
+          </button>
+        </div>
+        <div id="feedback"></div>`;
+    }
+
+    document.getElementById('mainArea').innerHTML = `
+      ${scoreHTML}
+      <div class="q-header">
+        <span class="q-topic-badge">${selectedTopic}</span>
+        <span class="q-mode-badge">${modeLabel}</span>
+        <span class="q-count-badge">Soru #${questionCount}</span>
+      </div>
+      <div class="q-card">
+        <div class="q-text">${q.soru}</div>
+        ${bodyHTML}
+        <div id="nextArea"></div>
+      </div>`;
+  }
+
+  function escapeJS(str) {
+    if (!str) return '';
+    return str.replace(/'/g, "\\'").replace(/"/g, '\\"').replace(/\n/g, ' ');
+  }
+
+  function checkMC(btn, chosen, correct) {
+    if (answered) return;
+    answered = true;
+
+    document.querySelectorAll('.option-btn').forEach(b => {
+      b.disabled = true;
+      if (b.dataset.letter === correct) b.classList.add('correct');
+    });
+
+    const isCorrect = chosen === correct;
+    if (isCorrect) { correctCount++; btn.classList.add('correct'); }
+    else btn.classList.add('wrong');
+
+    const fb = document.getElementById('feedback');
+    fb.innerHTML = isCorrect
+      ? `<div class="feedback correct-fb"><div class="feedback-title">✅ Doğru!</div><div class="feedback-text">Tebrikler, doğru cevabı işaretlediniz.</div></div>`
+      : `<div class="feedback wrong-fb"><div class="feedback-title">❌ Yanlış — Doğru: ${correct}</div></div>`;
+
+    document.getElementById('nextArea').innerHTML = `
+      <div class="next-area">
+        <span style="font-size:13px;color:var(--muted)">Sonraki soruya geçmek için →</span>
+        <button class="next-btn" onclick="loadQuestion()">Yeni Soru ➜</button>
+      </div>`;
+  }
+
+  async function checkOE(modelCevap, aciklama) {
+    if (answered) return;
+    const userAns = document.getElementById('userAnswer')?.value?.trim();
+    if (!userAns) { alert('Lütfen bir cevap yazın.'); return; }
+    answered = true;
+
+    const submitBtn = document.querySelector('.submit-btn');
+    if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = '⏳ Değerlendiriliyor…'; }
+
+    const evalPrompt = `Bir Türk edebiyatı YKS sınavı sorusuna öğrenci cevabını değerlendir.
+
+Model cevap: ${modelCevap}
+
+Öğrenci cevabı: ${userAns}
+
+SADECE şu JSON formatında yanıt ver:
+{"puan": 0-10, "degerlendirme": "kısa değerlendirme metni", "dogru_bilgi": "doğru ve eksiksiz bilgi"}`;
+
+    try {
+      const res = await fetch("https://api.anthropic.com/v1/messages", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          model: "claude-sonnet-4-20250514",
+          max_tokens: 600,
+          messages: [{ role: "user", content: evalPrompt }]
+        })
+      });
+
+      const data = await res.json();
+      const text = data.content?.[0]?.text || '';
+      const clean = text.replace(/```json|```/g, '').trim();
+      const ev = JSON.parse(clean);
+
+      if (ev.puan >= 7) correctCount++;
+
+      document.getElementById('feedback').innerHTML = `
+        <div class="feedback eval-fb">
+          <div class="feedback-title">🤖 AI Değerlendirmesi — ${ev.puan}/10</div>
+          <div class="feedback-text">
+            <p>${ev.degerlendirme}</p>
+            <p style="margin-top:10px;padding-top:10px;border-top:1px solid rgba(201,137,42,0.2);"><strong>Doğru bilgi:</strong> ${ev.dogru_bilgi}</p>
+          </div>
+        </div>`;
+    } catch {
+      document.getElementById('feedback').innerHTML = `
+        <div class="feedback eval-fb">
+          <div class="feedback-title">📝 Model Cevap</div>
+          <div class="feedback-text">${modelCevap}</div>
+        </div>`;
+    }
+
+    document.getElementById('nextArea').innerHTML = `
+      <div class="next-area">
+        <button class="next-btn" onclick="loadQuestion()">Yeni Soru ➜</button>
+      </div>`;
+  }
+</script>
+</body>
+</html>
